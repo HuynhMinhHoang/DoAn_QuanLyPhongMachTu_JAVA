@@ -17,14 +17,17 @@ import java.net.URLEncoder;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.temporal.Temporal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -122,59 +125,34 @@ public class DangKyKhamController {
 
         List<PhieuDangKy> listPDK = (List<PhieuDangKy>) this.lapDsKhamService.getPDKByIdTaiKhoan(tk.getIdTk());
 
-        PhieuDangKy phieuDkyCuoiCung = null;
+        PhieuDangKy phieuDkyCuoiCung = listPDK.isEmpty() ? null : listPDK.get(listPDK.size() - 1);
 
         Date ngayGioHienTai = new Date();
+        LocalDate ngayGioHienTaiLocalDate = ngayGioHienTai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        LocalDate ngayTaoPhieu = phieuDkyCuoiCung.getThoiGianTaophieu().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         if (pdk.getChonNgaykham() != null && !pdk.getThoiGianKham().isEmpty()) {
-
-            if (listPDK.isEmpty()) {
-
+            if (phieuDkyCuoiCung == null || !ngayTaoPhieu.equals(ngayGioHienTaiLocalDate)) {
                 this.lapDsKhamService.themPhieuDangKy(pdk);
-
-                listPDK = (List<PhieuDangKy>) this.lapDsKhamService.getPDKByIdTaiKhoan(tk.getIdTk());
                 return "redirect:/benhnhan/lichsukham";
             } else {
-                for (PhieuDangKy pdks : listPDK) {
+                Date thoiGianTaoPhieu = phieuDkyCuoiCung.getThoiGianTaophieu();
+                long timeDifferenceMillis = ngayGioHienTai.getTime() - thoiGianTaoPhieu.getTime();
+                long timeDifferenceMinutes = TimeUnit.MILLISECONDS.toMinutes(timeDifferenceMillis);
 
-                    phieuDkyCuoiCung = pdks;
-
-                    if (phieuDkyCuoiCung != null) {
-                        Calendar calHienTai = Calendar.getInstance();
-                        calHienTai.setTime(ngayGioHienTai);
-                        int gioHienTai = calHienTai.get(Calendar.HOUR_OF_DAY);
-                        int phutHienTai = calHienTai.get(Calendar.MINUTE);
-
-                        Calendar calCuoiCung = Calendar.getInstance();
-                        calCuoiCung.setTime(phieuDkyCuoiCung.getThoiGianTaophieu());
-                        int gioCuoiCung = calCuoiCung.get(Calendar.HOUR_OF_DAY);
-                        int phutCuoiCung = calCuoiCung.get(Calendar.MINUTE);
-
-                        int tongPhutHienTai = gioHienTai * 60 + phutHienTai;
-                        int tongPhutCuoiCung = gioCuoiCung * 60 + phutCuoiCung;
-
-                        int khoangThoiGianPhut = tongPhutHienTai - tongPhutCuoiCung;
-
-                        if (khoangThoiGianPhut <= 1) {
-                            err = "Bệnh nhân chỉ được phép gửi phiếu đăng ký sau 1p kể từ lần gửi trước đó!";
-                            return "redirect:/benhnhan/dangkykham" + "?err=" + URLEncoder.encode(err, "UTF-8");
-                        }
-
-                    }
-//                    Date thoiGianTaoPhieu = pdks.getThoiGianTaophieu();
-//                    model.addAttribute("thoiGianTaoPhieu", thoiGianTaoPhieu);
+                if (timeDifferenceMinutes >= 1) {
+                    this.lapDsKhamService.themPhieuDangKy(pdk);
+                    return "redirect:/benhnhan/lichsukham";
+                } else {
+                    err = "Bệnh nhân chỉ được phép gửi phiếu đăng ký sau 1 phút kể từ lần gửi trước đó!";
+                    return "redirect:/benhnhan/dangkykham" + "?err=" + URLEncoder.encode(err, "UTF-8");
                 }
-
             }
-
         } else {
             err = "Vui lòng nhập đủ thông tin!";
             return "redirect:/benhnhan/dangkykham" + "?err=" + URLEncoder.encode(err, "UTF-8");
         }
 
-        this.lapDsKhamService.themPhieuDangKy(pdk);
-        return "redirect:/benhnhan/lichsukham";
-
-//        return "dangkykham";
     }
 }

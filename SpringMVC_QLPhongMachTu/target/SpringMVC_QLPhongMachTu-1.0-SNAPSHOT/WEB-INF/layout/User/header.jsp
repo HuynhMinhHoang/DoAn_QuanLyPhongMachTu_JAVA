@@ -43,6 +43,7 @@
                     <sec:authorize access="hasRole('BENHNHAN')">
                         <li class="tab"><a href="<c:url value ="/benhnhan/dangkykham"/>">Đăng ký khám</a></li>
                         <li class="tab"><a href="<c:url value ="/benhnhan/lichsukham"/>">Lịch sử khám bệnh</a></li>
+                        <li class="tab"><a href="<c:url value ="/benhnhan/lichsuthanhtoan"/>">Lịch sử thanh toán</a></li>
                         </sec:authorize>
 
 

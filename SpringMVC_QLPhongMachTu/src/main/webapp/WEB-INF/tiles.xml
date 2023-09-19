@@ -60,6 +60,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/User/lichsukham.jsp" />
     </definition>
     
+    <definition name="lichsuthanhtoan" extends="baseLayout">
+        <put-attribute name="title" value="Lịch sử thanh toán" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/lichsuthanhtoan.jsp" />
+    </definition>
+    
     <definition name="doimatkhau" extends="baseLayout">
         <put-attribute name="title" value="Đổi mật khẩu" />
         <put-attribute name="content"

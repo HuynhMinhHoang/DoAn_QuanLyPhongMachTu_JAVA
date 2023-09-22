@@ -6,6 +6,7 @@ package com.hmh.service;
 
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
+import com.hmh.pojo.TaiKhoan;
 import java.util.List;
 import java.util.Map;
 
@@ -22,4 +23,6 @@ public interface ThanhToanService {
     boolean xacNhanHD(int idHd);
     
     List<HoaDon> timKiemPDK(Map<String, String> params);
+    
+    List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn);
 }

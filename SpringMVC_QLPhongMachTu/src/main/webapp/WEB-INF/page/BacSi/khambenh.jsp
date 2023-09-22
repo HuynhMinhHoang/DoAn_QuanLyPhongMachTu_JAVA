@@ -81,11 +81,11 @@
 
                             <c:otherwise>
                                 <div class="contentdkk5 contentdkk51">
-                                    <form:input class="custom-input" type="text" id="custom-input1" path="trieuChung" placeholder="Triệu chứng" />
+                                    <form:input class="custom-input" type="text" id="custom-input1" path="trieuChung" placeholder="Triệu chứng"  oninput="validateInput(event)"/>
                                 </div>
 
                                 <div class="contentdkk5 contentdkk51">
-                                    <form:input class="custom-input" type="text" id="custom-input1" path="ketLuan" placeholder="Kết luận bệnh án" />
+                                    <form:input class="custom-input" type="text" id="custom-input1" path="ketLuan" placeholder="Kết luận bệnh án"  oninput="validateInput(event)"/>
                                 </div>
                             </c:otherwise>
                         </c:choose>
@@ -170,7 +170,7 @@
                                 <td>${ct.idPdk.idPhieudk}</td>
                                 <td>${ct.idDv.idDv}</td>
                                 <td>${ct.idDv.tenDv}</td>
-                                <td>${ct.idDv.giaDv}vnđ</td>
+                                <td class="formatTien">${ct.idDv.giaDv}</td>
                                 <td></td>
                             </tr> 
                         </c:forEach>
@@ -239,7 +239,7 @@
                                 <th>Ngày khám</th>
                                 <th>Triệu chứng</th>
                                 <th>Kết luận</th>
-                                <th>Dịch vụ</th>
+                               
 
                             </tr>
                         </thead>
@@ -256,7 +256,6 @@
                                             </td>
                                             <td>${p.idPk.trieuChung}</td>
                                             <td>${p.idPk.ketLuan}</td>
-                                            <th></th>
                                         </tr>
                                     </c:when>
                                     <c:otherwise>
@@ -266,7 +265,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <th></th>
+                                       
                                         </tr>   
                                     </c:otherwise>
                                 </c:choose>
@@ -287,3 +286,16 @@
 
 
 </nav>
+
+
+<script>
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+</script>
+
+<script src="<c:url value="/js/main.js" />"></script>

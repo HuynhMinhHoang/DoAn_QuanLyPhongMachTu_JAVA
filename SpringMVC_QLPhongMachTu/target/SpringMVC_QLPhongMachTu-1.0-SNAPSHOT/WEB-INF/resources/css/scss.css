@@ -491,11 +491,14 @@ ul.menucha > li > a:hover{
 /*err*/
 
 .alert1{
+    width: 70%;
     color: #842029;
     background-color: #f8d7da;
     border-color: #f5c2c7;
     padding: 20px;
     text-align: center;
+    margin: auto;
+    border-radius: 10px;
 }
 
 #hoTen111{
@@ -557,7 +560,7 @@ ul.menucha > li > a:hover{
     flex-direction: column;
     margin-top: 50px;
     box-shadow: 0px 0px 40px 0px #c0f4b9;
-/*    border-radius: 0 0   0 0;*/
+    /*    border-radius: 0 0   0 0;*/
     padding: 30px
 }
 .text_footer{
@@ -1017,6 +1020,7 @@ select.buoiKham1{
 
 #upload{
     padding: 3px;
+    width: 90%;
 }
 
 
@@ -1037,8 +1041,8 @@ main.table {
 .table__header {
     width: 100%;
     /*height: 10%;*/
-    margin-top: 20px;
-    margin-bottom : 20px;
+    /*margin-top: 20px;*/
+    margin-bottom : 50px;
     background-color: #fffff;
     display: flex;
     justify-content: space-around;
@@ -1103,7 +1107,7 @@ main.table {
 #role_main div select{
     padding: 8px;
     background: white;
-    width: 100%;
+    width: 90%;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
 }
@@ -1146,7 +1150,7 @@ main.table {
 }
 
 .donvi{
-    padding: 8px;
+    padding: 13px;
     background: white;
     width: 100%;
     border: 1px solid #e0e0e0;
@@ -1277,10 +1281,6 @@ main.table1{
     box-shadow: 0px 0px 40px 0px #c0f4b9;
     /*margin-top: 60px;*/
     margin-top: 30px;
-
-
-    /*        display: flex;
-            justify-content: center;*/
 }
 
 .table__body1 {
@@ -1370,7 +1370,10 @@ tbody tr:nth-child(even) {
 }
 
 .table__body1_loaiThuoc{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    width: 80% !important;
+    margin: auto !important;
+    height: 700px;
 }
 
 .table__body1{
@@ -1392,11 +1395,14 @@ tbody tr:nth-child(even) {
 }
 
 .change_ac11{
-    padding: 60px;
+    /*padding: 30px;*/
     background: #E9F9E7;
-    border-radius: 0px;
+    border-radius: 20px;
     display: block;
+    margin-right: 120px;
+    margin-top: 30px;
 }
+
 .admin_btn1{
     margin-bottom: 50px;
 }
@@ -1424,7 +1430,27 @@ tbody tr:nth-child(even) {
     font-size: 17px;
 }
 
+.kwPage1{
+    display: flex;
+    align-content: center;
 
+}
+
+.kwPage1{
+    margin-top: 20px !important;
+    list-style-type: none;
+    text-decoration: none;
+    margin: auto;
+    padding: 0px;
+}
+
+.kwPage1 li a{
+    color: black;
+}
+.kwPage1 li a:hover{
+    color: rgb(130, 201, 30);
+    background: white;
+}
 
 #idRole{
     width: 250px;
@@ -1435,11 +1461,13 @@ tbody tr:nth-child(even) {
 #xacnhan{
     color:#dc3545;
     margin: 0px;
+    /*    font-size: 19px;*/
 }
 
 #xacnhan1{
     color:rgb(130, 201, 30);
     margin: 0px;
+    /*font-size: 19px;*/
 }
 
 #xoaThuoc{
@@ -1529,9 +1557,15 @@ tbody tr:nth-child(even) {
 }
 
 
+.pdk_xacnhan{
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
 
-
-
+.pdk_xacnhan11{
+    margin: auto;
+}
 
 
 
@@ -1764,7 +1798,7 @@ main.lskham{
 
 .lskhambenh{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-end;
 }
 
@@ -2015,6 +2049,30 @@ select.form-select11{
     width: 330px;
 }
 
+/*pdf*/
+/*h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}*/
+
+.page-container {
+    border: 1px solid #000;
+    padding: 20px;
+    margin: 20px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 50px;
+}
+
+
 
 
 /*thongke*/
@@ -2034,7 +2092,9 @@ select.form-select11{
         display: flex;
         justify-content: space-around;*/
 }
-
+.contentdkk222323 h5{
+    display: flex;
+}
 main.tableQLTK{
     margin-top: 30px;
 }
@@ -2074,7 +2134,12 @@ main.tableQLTK{
 }
 
 #year{
+    border-radius: 10px;
     margin-right: 40px;
+}
+
+#month{
+    border-radius: 10px;
 }
 
 .TK_Quy{
@@ -2333,7 +2398,9 @@ main.saplichlam{
 main.table324234{
     margin: auto;
 }
-
+.table324234yt{
+    margin-top: 40px !important;
+}
 .admin_submit1113{
     width: 130px;
     padding: 15px;

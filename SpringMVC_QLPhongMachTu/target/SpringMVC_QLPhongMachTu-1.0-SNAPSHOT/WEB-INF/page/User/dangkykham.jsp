@@ -109,10 +109,10 @@
 
 
                 <div class="contentdkk5">
-                    <form:input class="custom-input" type="date" id="custom-input1" path="chonNgaykham" placeholder="Ngày khám" />
+                    <form:input class="custom-input" type="date" id="custom-input1" path="chonNgaykham" placeholder="Ngày khám" required="true"/>
                 </div>
 
-                <form:select path="thoiGianKham" id="thoiGianKham" class="form-select buoiKham1" cssErrorClass="is-invalid" placeholder="Giờ khám">
+                <form:select path="thoiGianKham" id="thoiGianKham" class="form-select buoiKham1" cssErrorClass="is-invalid" placeholder="Giờ khám" required="true">
                     <form:option value="" label="Buổi khám" />
                     <form:option value="Sáng" label="Sáng" />
                     <form:option value="Trưa" label="Trưa" />
@@ -135,22 +135,12 @@
 
 </nav>
 
-
-<!--<script>
-    var thoiGianTaoPhieu = new Date('{thoiGianTaoPhieu}');
-
-    // Lấy thời gian hiện tại
-    var thoiGianHienTai = new Date();
-
-    // Tính khoảng thời gian giữa thời gian tạo phiếu và thời gian hiện tại
-    var khoangThoiGian = thoiGianHienTai - thoiGianTaoPhieu;
-
-    // Kiểm tra xem phiếu có được tạo trong vòng 24 giờ hay không
-    if (khoangThoiGian <= 24 * 60 * 60 * 1000) {
-        // Nếu trong vòng 24 giờ, hiển thị nút "ĐĂNG KÝ KHÁM"
-        document.getElementById('btnDangKyKham').style.display = 'block';
-    } else {
-        // Nếu đã quá 24 giờ, ẩn nút "ĐĂNG KÝ KHÁM"
-        document.getElementById('btnDangKyKham').style.display = 'none';
+<script>
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
     }
-</script>-->
+</script>

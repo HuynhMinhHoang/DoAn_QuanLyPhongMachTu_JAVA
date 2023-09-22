@@ -4,7 +4,6 @@
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -55,10 +54,8 @@ public class PhieuKhamBenh implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date ngayKhamBenh;
     @OneToMany(mappedBy = "idPk")
-    @JsonIgnore
     private Set<PhieuDangKy> phieuDangKySet;
     @OneToMany(mappedBy = "idPhieukham")
-    @JsonIgnore
     private Set<ChiTietThuoc> chiTietThuocSet;
 
     public PhieuKhamBenh() {

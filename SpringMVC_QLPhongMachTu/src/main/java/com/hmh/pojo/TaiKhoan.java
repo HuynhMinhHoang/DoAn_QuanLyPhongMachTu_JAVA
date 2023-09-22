@@ -101,16 +101,12 @@ public class TaiKhoan implements Serializable {
     @ManyToOne
     private UserRole idRole;
     @OneToMany(mappedBy = "idBn")
-    @JsonIgnore
     private Set<PhieuDangKy> phieuDangKySet;
     @OneToMany(mappedBy = "idBs")
-    @JsonIgnore
     private Set<PhieuDangKy> phieuDangKySet1;
     @OneToMany(mappedBy = "idYt")
-    @JsonIgnore
     private Set<PhieuDangKy> phieuDangKySet2;
     @OneToMany(mappedBy = "idTk")
-    @JsonIgnore
     private Set<ChiTietThoiGianTruc> chiTietThoiGianTrucSet;
 
     public TaiKhoan() {

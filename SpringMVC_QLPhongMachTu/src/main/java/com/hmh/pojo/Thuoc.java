@@ -4,7 +4,6 @@
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -36,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Thuoc.findByTenThuoc", query = "SELECT t FROM Thuoc t WHERE t.tenThuoc = :tenThuoc"),
     @NamedQuery(name = "Thuoc.findByXuatXu", query = "SELECT t FROM Thuoc t WHERE t.xuatXu = :xuatXu"),
     @NamedQuery(name = "Thuoc.findByGiaThuoc", query = "SELECT t FROM Thuoc t WHERE t.giaThuoc = :giaThuoc"),
-    @NamedQuery(name = "Thuoc.findBySoLuong", query = "SELECT t FROM Thuoc t WHERE t.soLuong = :soLuong")})
+    @NamedQuery(name = "Thuoc.findBySoLuong", query = "SELECT t FROM Thuoc t WHERE t.soLuong = :soLuong"),
+    @NamedQuery(name = "Thuoc.findByGhiChu", query = "SELECT t FROM Thuoc t WHERE t.ghiChu = :ghiChu")})
 public class Thuoc implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,6 +55,9 @@ public class Thuoc implements Serializable {
     private Long giaThuoc;
     @Column(name = "so_luong")
     private Integer soLuong;
+    @Size(max = 500)
+    @Column(name = "ghi_chu")
+    private String ghiChu;
     @JoinColumn(name = "don_vi", referencedColumnName = "id_donVi")
     @ManyToOne
     private DonviThuoc donVi;
@@ -62,7 +65,6 @@ public class Thuoc implements Serializable {
     @ManyToOne
     private LoaiThuoc loaiThuoc;
     @OneToMany(mappedBy = "idThuoc")
-    @JsonIgnore
     private Set<ChiTietThuoc> chiTietThuocSet;
 
     public Thuoc() {
@@ -110,6 +112,14 @@ public class Thuoc implements Serializable {
 
     public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
+    }
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
     public DonviThuoc getDonVi() {
@@ -161,5 +171,5 @@ public class Thuoc implements Serializable {
     public String toString() {
         return "com.hmh.pojo.Thuoc[ idThuoc=" + idThuoc + " ]";
     }
-
+    
 }

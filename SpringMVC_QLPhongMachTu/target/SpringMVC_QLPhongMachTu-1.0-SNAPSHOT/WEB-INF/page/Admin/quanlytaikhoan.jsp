@@ -132,12 +132,12 @@
 
                 <div class="change1 change11 change11TK">
                     <h5>Họ tên</h5>
-                    <form:input type="text" path="hoTen" id="hoTen" placeholder=""/>
+                    <form:input type="text" path="hoTen" id="hoTen" placeholder="" oninput="validateInput(event)"/>
                 </div>
 
                 <div class="change1 change11">
                     <h5>Ngày sinh</h5>
-                    <form:input type="date" path="ngaySinh" id="ngaySinhAdmin" placeholder=""/>
+                    <form:input type="date" path="ngaySinh" id="ngaySinhAdmin" placeholder=""  required="true"/>
                 </div>
 
             </div>
@@ -148,7 +148,6 @@
                     <h5>Giới tính</h5>
                     <%--<form:input type="text" path="gioiTinh" id="gioiTinh" placeholder=""/>--%>
                     <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
-                        <form:option value="" label="Giới tính" />
                         <form:option value="Nam" label="Nam" />
                         <form:option value="Nữ" label="Nữ" />
                         <form:option value="Khác" label="Khác" />
@@ -158,7 +157,7 @@
 
                 <div class="change1 change11">
                     <h5>Email</h5>
-                    <form:input type="text" path="email" id="Email" placeholder=""/>
+                    <form:input type="email" path="email" id="Email" placeholder="" oninput="validateInput(event)"/>
                 </div>
 
             </div>
@@ -168,11 +167,11 @@
             <div class="change_ac1">
                 <div class="change1 change11">
                     <h5>Địa chỉ</h5>
-                    <form:input type="text" path="diaChi" id="diaChi" placeholder=""/>
+                    <form:input type="text" path="diaChi" id="diaChi" placeholder="" oninput="validateInput(event)"/>
                 </div>
                 <div class="change1 change11">
                     <h5>SÐT</h5>
-                    <form:input type="text" path="sdt" id="sdt" placeholder=""/>
+                    <form:input type="text" path="sdt" id="sdt" placeholder="" oninput="validateInput(event)"/>
                 </div>
 
             </div>
@@ -183,17 +182,17 @@
 
                 <div class="change1 change11">
                     <h5>Username</h5>
-                    <form:input type="text" path="taiKhoan" id="taiKhoan" placeholder=""/>
+                    <form:input type="text" path="taiKhoan" id="taiKhoan" placeholder="" oninput=" kyTu(event)"/>
                 </div>
 
                 <div class="change1 change11">
                     <h5>Password</h5>
                     <c:choose>
                         <c:when test="${addtaikhoan.idTk == null}">
-                            <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
+                            <form:input type="password" path="matKhau" id="matKhau" placeholder="" oninput=" kyTu(event)"/>
                         </c:when>
                         <c:otherwise>
-                            <form:input type="text" path="matKhau" id="matKhau" placeholder="" readonly="true"/>
+                            <form:input type="password" path="matKhau" id="matKhau" placeholder="" readonly="true" oninput=" kyTu(event)"/>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -220,7 +219,7 @@
 
                 <div class="change1 change11">
                     <h5>Avatar</h5>
-                    <form:input type="file" id="upload" path="file" placeholder="Upload Avatar"/>
+                    <form:input type="file" id="upload" path="file" placeholder="Upload Avatar" required="true"/>
                 </div>
 
             </div>
@@ -229,6 +228,25 @@
 
 </main>
 
+<script>
 
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+
+    function kyTu(event) {
+        var inputValue = event.target.value;
+        var regex = /^[a-zA-Z0-9]+$/;
+
+        if (!regex.test(inputValue)) {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+</script>
 
 <script src="<c:url value="/js/main.js" />"></script>

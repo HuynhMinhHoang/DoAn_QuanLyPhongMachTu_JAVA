@@ -34,7 +34,7 @@
                 <div class="profile_btn">
                     <button class="admin_submit111 admin_submit11111" type="submit">
                         <a href="<c:url value ="/dangkylich"/>">
-                            Đăng ký lịch
+                            Điểm danh
                         </a>
                     </button>
                 </div>
@@ -68,18 +68,18 @@
 
                         <!--<td id="xacnhan1">{d.trangThaidky == 1 ? 'Đã xác nhận' : 'Chưa xác nhận'}</td>-->
                         <td>
-                            <%--<c:choose>--%>
-                                <%--<c:when test="${d.idPk == null}">--%>
+                            <c:choose>
+                                <c:when test="${d.idPk == null}">
                                     <button class="admin_submit111">
                                         <a href="<c:url value="/bacsi/khambenh/${d.idPhieudk}"/>" > 
                                             Khám bệnh
                                         </a>
                                     </button>
-                                <%--</c:when>--%>
-                                <%--<c:otherwise>--%>
-                                    <!--<p id="xacnhan1"> Đã khám bệnh</p>-->
-                                <%--</c:otherwise>--%>
-                            <%--</c:choose>--%>
+                                </c:when>
+                                <c:otherwise>
+                                    <p id="xacnhan1"> Đã khám bệnh</p>
+                                </c:otherwise>
+                            </c:choose>
                         </td>
                     </tr>
                 </tbody>
@@ -92,4 +92,12 @@
 
 </nav>
 
-
+<script>
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+</script>

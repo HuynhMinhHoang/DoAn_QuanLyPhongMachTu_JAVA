@@ -62,11 +62,17 @@
 
                 <form id="selectForm" action="${actions}" method="post">
 
-                    <div>
+                    <div class="form-select111123">
+                        <div class="contentdkk2 contentdkk22 contentdkk222323">
+                            <h5>  Phân loại thuốc</h5>
+                        </div>
+
+
+
                         <input type="hidden" id="selectedLoaiThuocId" name="idLoaiThuoc" value="" />
                         <select id="loaiThuoccc" class="form-select form-select1 form-select111" cssErrorClass="is-invalid">
                             <c:forEach items="${loaiThuoc}" var="d">
-                                <option value="${d.idloaiThuoc}" >${d.tenLoaiThuoc}</option>
+                                <option value="${d.idloaiThuoc}" >(${d.idloaiThuoc}) ${d.tenLoaiThuoc}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -85,13 +91,13 @@
 
                         <form:select path="idThuoc" id="idThuoccc" class="form-select form-select1 form-select111" cssErrorClass="is-invalid">
                             <c:forEach items="${thuocByLoaiThuoc}" var="c">
-                                <option value="${c.idThuoc}" >${c.tenThuoc}</option>
+                                <option value="${c.idThuoc}" >[${c.loaiThuoc.idloaiThuoc}] ${c.tenThuoc}</option>
                             </c:forEach>
                         </form:select>
 
 
                         <div class="contentdkk5 contentdkk51">
-                            <form:input class="custom-input" type="number" min="0" id="custom-input1" path="soLuongSd" placeholder="Số lượng" required="true"/>
+                            <form:input class="custom-input" type="number" min="0" id="custom-input1" path="soLuongSd" placeholder="Số lượng" required="true" oninput="validateInput(event)"/>
                         </div>
 
                         <div class="contentdkk5 contentdkk51 contentdkk511">
@@ -107,9 +113,8 @@
                     </div>
 
 
-
                     <div class="contentdkk5 contentdkk51">
-                        <form:input class="custom-input" type="text" id="custom-input1" path="hdsd" placeholder="Hướng dẫn sử dụng thuốc" required="true"/>
+                        <form:input class="custom-input" type="text" id="custom-input1" path="hdsd" placeholder="Hướng dẫn sử dụng thuốc" required="true"  oninput="validateInput(event)"/>
                     </div>
                 </form:form>
 
@@ -120,7 +125,15 @@
 
 
 
-
+        <script>
+            function validateInput(event) {
+                var inputValue = event.target.value;
+                if (inputValue.trim() === '') {
+                    event.target.value = '';
+                    event.preventDefault();
+                }
+            }
+        </script>
 
 
 
@@ -142,22 +155,31 @@
                                 <th>Số lượng</th>
                                 <th>Hướng dẫn sử dụng</th>
                                 <th>Loại thuốc</th>
+                                <th>Ghi chú</th>
                                 <th>Tiền thuốc</th>
+                                <th></th>
 
                             </tr>
                         </thead>
 
                         <tbody>
                             <c:forEach items="${listThuocByID}" var="p">
-                                <tr>
-                                    <td>${p.idThuoc.tenThuoc}</td>
-                                    <td>${p.soLuongSd} ${p.idThuoc.donVi.tenDonVi}</td>
-                                    <td>${p.hdsd}</td>
-                                    <td>${p.idThuoc.loaiThuoc.tenLoaiThuoc}</td>
-                                    <td>${p.idThuoc.giaThuoc * p.soLuongSd}vnđ</td>
-
-                                </tr>
-                            </c:forEach>
+                            <input type="hidden" name="idChitietThuoc" value="${p.idChitietThuoc}" />
+                            <tr>
+                                <td>${p.idThuoc.tenThuoc}</td>
+                                <td>${p.soLuongSd} ${p.idThuoc.donVi.tenDonVi}</td>
+                                <td>${p.hdsd}</td>
+                                <td>${p.idThuoc.loaiThuoc.tenLoaiThuoc}</td>
+                                <td>${p.idThuoc.ghiChu}</td>
+                                <td>${p.idThuoc.giaThuoc * p.soLuongSd}vnđ</td>
+                                <td>
+                                    <c:url value="/bacsi/capthuoc/${p.idChitietThuoc}" var="apiDel"/>
+                                    <div class="admin_submit admin_submit11" onclick="xoaBillThuoc('${apiDel}')">
+                                        XÓA  
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </section>
@@ -203,6 +225,7 @@
 
     <div class="dkk khambenh khambenh1">
         <form>
+            <input type="hidden" name="idPDK" value="${idPDK}" />
             <div class="contentdkk2_main contentdkk2_main1 contentdkk2_main11">
                 <div class="contentdkk2 lskhambenh">
                     <h1>DANH SÁCH THUỐC</h1>
@@ -227,6 +250,7 @@
                                 <th>Giá thuốc</th>
                                 <th>Đơn vị</th>
                                 <th>Loại thuốc</th>
+                                <th>Ghi chú</th>
                                 <th>Số lượng</th>
 
 
@@ -242,6 +266,7 @@
                                     <td>${p.giaThuoc}</td>
                                     <td>${p.donVi.tenDonVi}</td>
                                     <td>${p.loaiThuoc.tenLoaiThuoc}</td>
+                                    <td>${p.ghiChu}</td>
                                     <td>${p.soLuong}</td>
 
                                 </tr>
@@ -274,7 +299,9 @@
     }
         <c:if test="${!loop.last}">,</c:if>
     </c:forEach>
-    ];</script>
+    ];
+</script>
+
 <script>
     var loaiThuocSelect = document.getElementById("loaiThuoccc");
     var idThuocSelect = document.getElementById("idThuoccc");
@@ -298,10 +325,11 @@
             if (thuoc.loaiThuocId === parseInt(selectedLoaiThuocId)) {
                 var option = document.createElement("option");
                 option.value = thuoc.idThuoc;
-                option.text = thuoc.tenThuoc;
+                option.text = "(" + thuoc.loaiThuocId + ") " + thuoc.tenThuoc;
                 idThuocSelect.appendChild(option);
             }
-        });
+        }
+        );
 
 
     });
@@ -311,4 +339,4 @@
 
 
 
-
+<script src="<c:url value="/js/main.js" />"></script>

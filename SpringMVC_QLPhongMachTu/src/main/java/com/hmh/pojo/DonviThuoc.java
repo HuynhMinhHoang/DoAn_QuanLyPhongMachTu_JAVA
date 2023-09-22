@@ -1,10 +1,9 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -44,7 +43,6 @@ public class DonviThuoc implements Serializable {
     @Column(name = "ten_don_vi")
     private String tenDonVi;
     @OneToMany(mappedBy = "donVi")
-    @JsonIgnore
     private Set<Thuoc> thuocSet;
 
     public DonviThuoc() {

@@ -4,10 +4,15 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.LichSuKhamRepository;
 import com.hmh.service.LichSuKhamService;
 import com.hmh.service.TaiKhoanService;
+import com.hmh.service.ThanhToanService;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,8 +36,11 @@ public class LichSuThanhToanController {
     @Autowired
     private LichSuKhamService lichSuKhamService;
 
+    @Autowired
+    private ThanhToanService thanhToanService;
+
     @GetMapping("/benhnhan/lichsuthanhtoan")
-    public String lichsukham(Model model, Authentication authentication) {
+    public String lichsuthanhtoan(Model model, Authentication authentication) {
 
         model.addAttribute("user", new TaiKhoan());
 
@@ -40,8 +48,21 @@ public class LichSuThanhToanController {
 
         TaiKhoan u = this.taiKhoanService.getTaiKhoanByUsername(user.getUsername());
 
-//        model.addAttribute("lskham", this.lichSuKhamRepository.getPhieuDangKy(u));
+        model.addAttribute("lsthanhtoan", this.thanhToanService.getHoaDonByBenhNhanId(u));
+
         model.addAttribute("user", u);
+
+        List<HoaDon> lstThanhToan = this.thanhToanService.getHoaDonByBenhNhanId(u);
+
+        // Định dạng số tiền trước khi đặt vào model
+        DecimalFormat decimalFormat = new DecimalFormat("#,### vnđ");
+        List<String> formattedAmounts = new ArrayList<>();
+        for (HoaDon hoaDon : lstThanhToan) {
+            String formattedAmount = decimalFormat.format(hoaDon.getTienThuoc());
+            formattedAmounts.add(formattedAmount);
+        }
+
+        model.addAttribute("formattedAmounts", formattedAmounts);
 
         return "lichsuthanhtoan";
 

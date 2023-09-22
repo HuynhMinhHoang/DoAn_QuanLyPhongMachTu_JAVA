@@ -49,6 +49,7 @@ com\hmh\share\utils\LogUtils.class
 com\hmh\share\utils\Encoder.class
 com\hmh\repository\impl\LapPhieuKhamRepositoryImpl.class
 com\hmh\service\impl\ChiTietDVServiceImpl.class
+com\hmh\controllers\LichSuThanhToanController.class
 com\hmh\pojo\PhieuKhamBenh_.class
 com\hmh\configs\AppConfig.class
 com\hmh\controllers\DangNhapController.class
@@ -72,6 +73,7 @@ com\hmh\repository\LapDsKhamRepository.class
 com\hmh\service\DangKyKhamService.class
 com\hmh\service\KhamBenhService.class
 com\hmh\repository\impl\CapThuocRepositoryImpl.class
+com\hmh\controllers\DonThuocController.class
 com\hmh\controllers\QuanLyThuocController.class
 com\hmh\repository\DangKyKhamRepository.class
 com\hmh\controllers\DangKyController.class

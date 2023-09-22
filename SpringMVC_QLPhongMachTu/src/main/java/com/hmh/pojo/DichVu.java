@@ -4,7 +4,6 @@
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -47,7 +46,6 @@ public class DichVu implements Serializable {
     @Column(name = "gia_dv")
     private Long giaDv;
     @OneToMany(mappedBy = "idDv")
-    @JsonIgnore
     private Set<ChiTietDv> chiTietDvSet;
 
     public DichVu() {

@@ -36,6 +36,7 @@ C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\ma
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\ThongKeDoanhThuServiceImpl.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\WebApplicationContextConfig.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\DangKyKhamServiceImpl.java
+C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DonThuocController.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\momoclasses\MoMoEndpoint.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\enums\ConfirmRequestType.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\LapPhieuKhamService.java
@@ -44,6 +45,7 @@ C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\ma
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\DangKyKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\QuanLyTaiKhoanRepositoryImpl.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\DateFormatter.java
+C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\LichSuThanhToanController.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\UserRole.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\momoclasses\PaymentRequest.java
 C:\Users\Asus\Desktop\DoAn_QuanLyPhongMachTu_JAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\ApiBacSiController.java

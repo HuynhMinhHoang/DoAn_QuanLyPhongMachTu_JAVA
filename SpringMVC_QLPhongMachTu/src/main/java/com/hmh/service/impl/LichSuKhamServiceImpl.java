@@ -4,6 +4,7 @@
  */
 package com.hmh.service.impl;
 
+import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.LichSuKhamRepository;
@@ -35,6 +36,11 @@ public class LichSuKhamServiceImpl implements LichSuKhamService {
     @Override
     public boolean xoaLsKham(int id) {
         return this.lichSuKhamRepository.xoaLsKham(id);
+    }
+
+    @Override
+    public List<ChiTietThuoc> getChiTietThuocByHoaDonId(int hoaDonId) {
+        return this.lichSuKhamRepository.getChiTietThuocByHoaDonId(hoaDonId);
     }
 
 }

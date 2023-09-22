@@ -23,4 +23,6 @@ public interface ThanhToanRepository {
     boolean xacNhanHD(int idHd);
 
     List<HoaDon> timKiemPDK(Map<String, String> params);
+
+    List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn);
 }

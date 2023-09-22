@@ -20,7 +20,16 @@
     </div>
 </c:if>
 
+
+
 <nav class="header-lapdskham">
+
+    <!--{pages}-->
+
+    <%--<c:forEach items="${dskham}" var="p">--%>
+    <!--{p.idBn}-->
+    <%--</c:forEach>--%>
+
     <div class="text-lsk lsk1">
         <p>Danh sách bệnh nhân đăng ký khám</p>
     </div>
@@ -29,12 +38,33 @@
         <form action="${actions}">
             <input name="kwDate" type="date"" placeholder="Tìm kiếm theo ngày...">
             <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+            <c:if test="${counter > 1}">
+                <div class="kwPage">
+                    <ul class="kwPage1">
+                        <c:url value="/yta/lapdskham" var="pageUrl">
+                            <c:param name="page" value="0" /> 
+                        </c:url>
+                        <li class="page-item"><a class="page-link" href="${pageUrl}">Tất cả</a></li>
+
+                        <c:forEach begin="1" end="${counter}" var="i">
+                            <c:url value="/yta/lapdskham" var="pageUrl">
+                                <c:param name="page" value="${i}" /> 
+                            </c:url>
+                            <li class="page-item"><a class="page-link" href="${pageUrl}">${i}</a></li>
+                            </c:forEach>
+                    </ul>
+                </div>
+            </c:if>
         </form>
     </div>
 </nav>
 
 
 <nav class="table1">
+
+
+
+
     <section class="table__body1">
         <table>
             <thead>
@@ -51,50 +81,57 @@
                 </tr>
             </thead>
             <c:forEach items="${dskham}" var="p">
-                <tbody>
-                    <tr>
-                        <td>
-                            ${p.idPhieudk}
-                            <c:url value="/yta/lapdskham" var="idpk">
-                                ${p.idPhieudk}<c:param name="idPhieudk" value="${p.idPhieudk}" />
-                            </c:url>
-                        </td>
-                        <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
-                        <td>${p.idBn.email}</td>
-                        <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
+                <c:choose>
+                    <c:when test="${p.trangThaidky.toString() eq 0}">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    ${p.idPhieudk}
+                                    <c:url value="/yta/lapdskham" var="idpk">
+                                        ${p.idPhieudk}<c:param name="idPhieudk" value="${p.idPhieudk}" />
+                                    </c:url>
+                                </td>
+                                <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
+                                <td>${p.idBn.email}</td>
+                                <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
 
-                        <td>${p.thoiGianKham}</td>
-
-
-                        <td>
-                            ${p.idBs.hoTen}
-                        </td>
+                                <td>${p.thoiGianKham}</td>
 
 
-                        <td>
-                            <c:choose>
-                                <c:when test="${p.trangThaidky.toString() eq 0}">
-                                    <p id="xacnhan">Chưa xác nhận</p>
-                                </c:when>
-                                <c:otherwise>
-                                    <p id="xacnhan1"> Đã xác nhận </p>
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-                        <td>${p.idYt.hoTen}</td>
-                        <td> 
-                            <c:choose>
-                                <c:when test="${p.trangThaidky == 0}">
-                                    <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>">
-                                        <button class="admin_submit111" type="submit">
-                                            Chọn
-                                        </button>
-                                    </a>
-                                </c:when>
-                            </c:choose>
-                        </td>
-                    </tr>
-                </tbody>
+                                <td>
+                                    ${p.idBs.hoTen}
+                                </td>
+
+
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${p.trangThaidky.toString() eq 0}">
+                                            <p id="xacnhan">Chưa xác nhận</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p id="xacnhan1"> Đã xác nhận </p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>${p.idYt.hoTen}</td>
+                                <td> 
+                                    <c:choose>
+                                        <c:when test="${p.trangThaidky == 0}">
+                                            <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>">
+                                                <button class="admin_submit111" type="submit">
+                                                    Chọn
+                                                </button>
+                                            </a>
+                                        </c:when>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <!--                        <p>Không có phiếu đăng ký nào "Chưa xác nhận"</p>-->
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </table>
     </section>
@@ -162,3 +199,75 @@
 </nav>
 
 
+<div class="pdk_xacnhan">
+    <section class="table__body1 pdk_xacnhan11">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Bệnh nhân</th>
+                    <th>Email</th>
+                    <th>Ngày hẹn khám</th>
+                    <th>Thời gian</th>
+                    <th>Bác sĩ</th>
+                    <th>Trạng thái</th>
+                    <th>Y tá xác nhận</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <c:forEach items="${dskham}" var="p">
+                <c:choose>
+                    <c:when test="${p.trangThaidky.toString() eq 1}">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    ${p.idPhieudk}
+                                    <c:url value="/yta/lapdskham" var="idpk">
+                                        ${p.idPhieudk}<c:param name="idPhieudk" value="${p.idPhieudk}" />
+                                    </c:url>
+                                </td>
+                                <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
+                                <td>${p.idBn.email}</td>
+                                <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
+
+                                <td>${p.thoiGianKham}</td>
+
+
+                                <td>
+                                    ${p.idBs.hoTen}
+                                </td>
+
+
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${p.trangThaidky.toString() eq 0}">
+                                            <p id="xacnhan">Chưa xác nhận</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p id="xacnhan1"> Đã xác nhận </p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>${p.idYt.hoTen}</td>
+                                <td> 
+                                    <c:choose>
+                                        <c:when test="${p.trangThaidky == 0}">
+                                            <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>">
+                                                <button class="admin_submit111" type="submit">
+                                                    Chọn
+                                                </button>
+                                            </a>
+                                        </c:when>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </c:when>
+                    <c:otherwise>
+                        <!--<p>Không có phiếu đăng ký nào "Chưa xác nhận"</p>-->
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </table>
+    </section>
+</div>

@@ -26,7 +26,7 @@
 
         <div class="login_main11">  
 
-            <p>ĐĂNG KÝ KHÁM</p>
+            <p>ĐĂNG KÝ</p>
             <section class="dky_flex">
 
                 <div class="dky1">
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+                                <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu" oninput="validateInput(event)"/>
                                 <%--<form:errors path="matKhau" element="div" cssClass="alert alert-danger" />--%>
                             </div>
 
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="password" id="confirm-password" path="confirmmatKhau" placeholder="Nhập lại mật khẩu"/>
+                                <form:input type="password" id="confirm-password" path="confirmmatKhau" placeholder="Nhập lại mật khẩu" oninput="validateInput(event)"/>
                             </div>
 
                         </div>
@@ -79,7 +79,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="email" id="email" path="email" placeholder="Email cá nhân"/>
+                                <form:input type="email" id="email" path="email" placeholder="Email cá nhân" oninput="validateInput(event)"/>
                             </div>
 
                         </div>
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="hoTen" id="hoTen" path="hoTen" placeholder="Họ tên"/>
+                                <form:input type="hoTen" id="hoTen" path="hoTen" placeholder="Họ tên" oninput="validateInput(event)"/>
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,6 @@
 
 
                             <form:select path="gioiTinh" id="gioiTinh1" class="form-select" cssErrorClass="is-invalid">
-                                <form:option value="" label="Giới tính" />
                                 <form:option value="Nam" label="Nam" />
                                 <form:option value="Nữ" label="Nữ" />
                                 <form:option value="Khác" label="Khác" />
@@ -143,7 +142,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="date" id="ngaySinh" path="ngaySinh" placeholder="Ngày sinh"/>
+                                <form:input type="date" id="ngaySinh" path="ngaySinh" placeholder="Ngày sinh" required="true"/>
                             </div>
                         </div>
                     </div>
@@ -155,7 +154,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="sdt" id="sdt" path="sdt" placeholder="Số điện thoại"/>
+                                <form:input type="sdt" id="sdt" path="sdt" placeholder="Số điện thoại" oninput="validateInput(event)"/>
                                 <%--<form:errors path="sdt" element="div" cssClass="alert alert-danger" />--%>
                             </div>
 
@@ -170,7 +169,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="diaChi" id="diaChi" path="diaChi" placeholder="Địa chỉ"/>
+                                <form:input type="diaChi" id="diaChi" path="diaChi" placeholder="Địa chỉ" oninput="validateInput(event)"/>
                             </div>
                         </div>
                     </div>
@@ -191,4 +190,23 @@
 </form:form>
 
 
+<script>
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
 
+    function kyTu(event) {
+        var inputValue = event.target.value;
+        var regex = /^[a-zA-Z0-9]+$/;
+
+        if (!regex.test(inputValue)) {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+
+</script>

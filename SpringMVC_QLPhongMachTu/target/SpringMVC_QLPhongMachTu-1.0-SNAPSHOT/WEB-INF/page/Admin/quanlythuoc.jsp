@@ -34,6 +34,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Tên Thuốc</th>
                             <th>Xuất Xứ</th>
@@ -41,22 +42,14 @@
                             <th>Đơn Vị </th>
                             <th>Số Lượng</th>
                             <th>Loại thuốc</th>
-                            <th></th>
+                            <th>Ghi chú</th>
+
                             <th id="User_Role">Thông báo</th>
                         </tr>
                     </thead>
                     <tbody >
                         <c:forEach items="${qlThuoc}" var="t">
-                            <tr >
-
-                                <td>${t.idThuoc}</td>
-                                <td>${t.tenThuoc}</td>
-                                <td>${t.xuatXu}</td>
-                                <td>${t.giaThuoc}</td>
-                                <td>${t.donVi.tenDonVi}</td>
-                                <td>${t.soLuong}</td>
-                                <td>${t.loaiThuoc.tenLoaiThuoc}</td>
-
+                            <tr>
                                 <td id="xoaThuoc">
                                     <div class="admin_submit admin_submit11" id="capnhathuoc">
                                         <a href="<c:url value="/admin/quanlythuoc/${t.idThuoc}"/>" >
@@ -64,6 +57,15 @@
                                         </a>
                                     </div>
                                 </td>
+                                <td>${t.idThuoc}</td>
+                                <td>${t.tenThuoc}</td>
+                                <td>${t.xuatXu}</td>
+                                <td class="formatTien">${t.giaThuoc}</td>
+                                <td>${t.donVi.tenDonVi}</td>
+                                <td>${t.soLuong}</td>
+                                <td>${t.loaiThuoc.tenLoaiThuoc}</td>
+                                <td>${t.ghiChu}</td>
+
 
                                 <c:choose>
                                     <c:when test="${t.soLuong <= 10}">
@@ -94,12 +96,12 @@
             <div class="change_ac1">
                 <div class="change1">
                     <h5>Tên Thuốc</h5>
-                    <form:input type="text" path="tenThuoc" id="tenThuoc" placeholder=""/>
+                    <form:input type="text" path="tenThuoc" id="tenThuoc" placeholder="" oninput="validateInput(event)"/>
                 </div>
 
                 <div class="change1">
                     <h5>Xuất Xứ</h5>
-                    <form:input type="text" path="xuatXu" id="xuatXu" placeholder=""/>
+                    <form:input type="text" path="xuatXu" id="xuatXu" placeholder="" oninput="validateInput(event)"/>
                 </div>
 
             </div>
@@ -107,7 +109,7 @@
             <div class="change_ac1">
                 <div class="change1">
                     <h5>Giá Thuốc</h5>
-                    <form:input type="text" path="giaThuoc" id="giaThuoc" placeholder=""/>
+                    <form:input type="text" path="giaThuoc" id="giaThuoc" placeholder="" oninput="validateInput(event)" required="true"/>
                 </div>
 
                 <!--<div>{thuoc.donVi.iddonVi}</div>-->
@@ -131,7 +133,12 @@
             <div class="change_ac1">
                 <div class="change1">
                     <h5>Số Lượng</h5>
-                    <form:input type="number" min="0" path="soLuong" id="soLuong" placeholder="" required="true"/>
+                    <form:input type="number" min="0" path="soLuong" id="soLuong" placeholder="" required="true"  oninput="validateInput(event)"/>
+                </div>
+
+                <div class="change1">
+                    <h5>Ghi chú</h5>
+                    <form:input type="text" path="ghiChu" id="ghiChu" placeholder=""/>
                 </div>
             </div>
 
@@ -176,6 +183,26 @@
 
 </main>
 
+<script>
+
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+
+    function kyTu(event) {
+        var inputValue = event.target.value;
+        var regex = /^[a-zA-Z0-9]+$/;
+
+        if (!regex.test(inputValue)) {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+</script>
 
 
 <script src="<c:url value="/js/main.js" />"></script>

@@ -17,7 +17,7 @@
 <%--</c:if>--%>
 
 
-<main class="table table324234">
+<main class="table table324234 table324234yt">
 
     <div>
         <section class="table__header table__header1515">
@@ -65,7 +65,11 @@
                                         <c:choose>
                                             <c:when test="${gioHienTai ge p.idTgTruc.batDau and gioHienTai le p.idTgTruc.ketThuc and ngayHienTai eq p.ngayDkyTruc  }">
                                                 <input type="hidden" name="idChiTietTgTruc" id="idChiTietTgTruc" value="${p.idChiTietTgTruc}">                                     
-                                                <a href="<c:url value="/yta/dangkylichYT/${p.idChiTietTgTruc}"/>">Điểm danh</a>
+                                                <button class="admin_submit111">
+                                                    <a href="<c:url value="/yta/dangkylichYT/${p.idChiTietTgTruc}"/>">
+                                                        Điểm danh
+                                                    </a>
+                                                </button>
 
                                             </c:when>
                                             <c:otherwise>
@@ -85,3 +89,27 @@
 
 </main> 
 
+<script>
+    function displayCurrentTime() {
+        var currentTime = new Date();
+
+        var daysOfWeek = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+        var dayOfWeek = daysOfWeek[currentTime.getDay()];
+
+        var day = currentTime.getDate();
+        var month = currentTime.getMonth() + 1; // Lưu ý: Tháng bắt đầu từ 0
+        var year = currentTime.getFullYear();
+
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        var formattedTime = dayOfWeek + ", " + day + "-" + month + "-" + year + " " + hours + ":" + minutes + ":" + seconds;
+
+        document.getElementById("current-time").textContent = formattedTime;
+    }
+
+    // Gọi hàm displayCurrentTime một lần khi trang được tải và sau đó mỗi giây
+    displayCurrentTime();
+    setInterval(displayCurrentTime, 1000);
+</script>

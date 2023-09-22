@@ -29,8 +29,10 @@ public interface CapThuocRepository {
     public ChiTietThuoc getChiTietThuocById(int id);
 
     List<ChiTietThuoc> layThuocByPhieuDangKyId(int idPDK);
-    
+
     boolean themHoaDonByPDK(HoaDon hd, int idPDK);
-    
+
     TienKham getTienKham(int tienKham);
+
+    boolean xoaBillThuoc(int id);
 }

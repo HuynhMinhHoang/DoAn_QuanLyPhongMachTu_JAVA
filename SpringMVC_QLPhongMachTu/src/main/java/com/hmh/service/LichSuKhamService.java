@@ -4,6 +4,7 @@
  */
 package com.hmh.service;
 
+import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import java.util.List;
@@ -19,4 +20,6 @@ public interface LichSuKhamService {
     PhieuDangKy getLsKhamId(int id);
 
     boolean xoaLsKham(int id);
+
+    List<ChiTietThuoc> getChiTietThuocByHoaDonId(int hoaDonId);
 }

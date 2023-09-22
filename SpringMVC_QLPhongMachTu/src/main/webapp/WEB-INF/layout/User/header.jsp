@@ -23,8 +23,8 @@
                 <ul class="list">
                     <c:if test="${pageContext.request.userPrincipal.name == null}">
                         <li class="tab"><a href="<c:url value ="/dangnhap"/>">Đăng nhập</a></li>
-                        <li class="tab"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
-                        <li class="tab123"><a href="<c:url value ="/dangky"/>">Đăng ký khám</a></li>
+                        <!--<li class="tab"><a href="c:url value ="/dangky"/>">Đăng ký</a></li>-->
+                        <li class="tab123"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
                         </c:if>
 
 
@@ -42,9 +42,10 @@
 
                     <sec:authorize access="hasRole('BENHNHAN')">
                         <li class="tab"><a href="<c:url value ="/benhnhan/dangkykham"/>">Đăng ký khám</a></li>
-                        <li class="tab"><a href="<c:url value ="/benhnhan/lichsukham"/>">Lịch sử khám bệnh</a></li>
+                        <li class="tab"><a href="<c:url value ="/benhnhan/lichsukham"/>">Lịch sử đăng ký khám</a></li>
                         <li class="tab"><a href="<c:url value ="/benhnhan/lichsuthanhtoan"/>">Lịch sử thanh toán</a></li>
-                        </sec:authorize>
+                        <!--<li class="tab"><a href="c:url value ="/benhnhan/donthuoc"/>">Tải đơn thuốc</a></li>-->
+                    </sec:authorize>
 
 
                     <sec:authorize access="hasRole('YTA')">
@@ -65,11 +66,11 @@
                     <%--</sec:authorize>--%>
 
                     <sec:authorize access="hasRole('BACSI') or hasRole('BACSI')">
-                        <li class="tab"><a href="<c:url value ="/bacsi/dangkylichBS"/>">Đăng ký lịch trực</a></li>
+                        <li class="tab"><a href="<c:url value ="/bacsi/dangkylichBS"/>">Điểm danh lịch trực</a></li>
                         </sec:authorize>
 
                     <sec:authorize access="hasRole('YTA') or hasRole('YTA')">
-                        <li class="tab"><a href="<c:url value ="/yta/dangkylichYT"/>">Đăng ký lịch trực</a></li>
+                        <li class="tab"><a href="<c:url value ="/yta/dangkylichYT"/>">Điểm danh lịch trực</a></li>
                         </sec:authorize>
 
 

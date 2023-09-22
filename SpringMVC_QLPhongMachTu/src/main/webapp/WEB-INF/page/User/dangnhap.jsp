@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="text" id="username" name="username" placeholder="Nhập tài khoản"/>
+                        <input type="text" id="username" name="username" placeholder="Nhập tài khoản" oninput="validateInput(event)" required="true"/>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu"  oninput="validateInput(event)" required="true">
                     </div>
                 </div>
             </div>
@@ -74,3 +74,14 @@
         </form>
     </div>
 </nav>
+
+
+<script>
+    function validateInput(event) {
+        var inputValue = event.target.value;
+        if (inputValue.trim() === '') {
+            event.target.value = '';
+            event.preventDefault();
+        }
+    }
+</script>

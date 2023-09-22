@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
@@ -100,6 +101,22 @@ public class ThanhToanRepositoryImpl implements ThanhToanRepository {
         }
 
         Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    public List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<HoaDon> query = builder.createQuery(HoaDon.class);
+        Root<HoaDon> root = query.from(HoaDon.class);
+
+        Join<HoaDon, PhieuDangKy> phieuDangKyJoin = root.join("idPhieudky");
+        Join<PhieuDangKy, TaiKhoan> taiKhoanJoin = phieuDangKyJoin.join("idBn");
+
+        query.select(root).where(builder.equal(taiKhoanJoin.get("idTk"), idBn.getIdTk()));
+
+        Query q = session.createQuery(query);
+
         return q.getResultList();
     }
 

@@ -53,7 +53,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/bacsi/capthuoc");
                 return;
             } else if (authority.getAuthority().equals("ROLE_BENHNHAN")) {
-                redirectStrategy.sendRedirect(hsr, hsr1, "/");
+                redirectStrategy.sendRedirect(hsr, hsr1, "/benhnhan/dangkykham");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_BENHNHAN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/benhnhan/donthuoc");
                 return;
             } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/quanlytaikhoan");

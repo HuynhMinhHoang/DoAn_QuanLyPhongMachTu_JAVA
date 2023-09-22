@@ -4,6 +4,7 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.service.CapThuocService;
 import com.hmh.service.QuanLyThuocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,16 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Asus
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class ApiBacSiController {
 
-//    @Autowired
-//    private QuanLyThuocService quanLyThuocService;
-//
-//    @DeleteMapping("/bacsi/capthuoc/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void xoaThuoc(@PathVariable(value = "id") int id) {
-//        this.quanLyThuocService.xoaThuoc(id);
-//    }
+    @Autowired
+    private CapThuocService capThuocService;
+
+    @DeleteMapping("/bacsi/capthuoc/{idChitietThuoc}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("idChitietThuoc") int idChitietThuoc) {
+        this.capThuocService.xoaBillThuoc(idChitietThuoc);
+    }
 
 }

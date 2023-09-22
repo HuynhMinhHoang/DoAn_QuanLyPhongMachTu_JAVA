@@ -6,6 +6,7 @@ package com.hmh.service.impl;
 
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
+import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.ThanhToanRepository;
 import com.hmh.service.ThanhToanService;
 import java.sql.Timestamp;
@@ -42,6 +43,11 @@ public class ThanhToanServiceImpl implements ThanhToanService {
     @Override
     public List<HoaDon> timKiemPDK(Map<String, String> params) {
         return this.thanhToanRepository.timKiemPDK(params);
+    }
+
+    @Override
+    public List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn) {
+        return this.thanhToanRepository.getHoaDonByBenhNhanId(idBn);
     }
 
 }

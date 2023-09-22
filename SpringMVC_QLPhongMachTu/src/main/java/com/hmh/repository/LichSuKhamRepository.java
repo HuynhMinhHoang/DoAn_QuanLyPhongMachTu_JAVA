@@ -4,6 +4,7 @@
  */
 package com.hmh.repository;
 
+import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import java.util.List;
@@ -12,8 +13,6 @@ import java.util.List;
  *
  * @author Asus
  */
-
-
 public interface LichSuKhamRepository {
 
     List<Object> getPhieuDangKy(TaiKhoan idBn);
@@ -21,4 +20,6 @@ public interface LichSuKhamRepository {
     PhieuDangKy getLsKhamId(int id);
 
     boolean xoaLsKham(int id);
+
+    List<ChiTietThuoc> getChiTietThuocByHoaDonId(int hoaDonId);
 }

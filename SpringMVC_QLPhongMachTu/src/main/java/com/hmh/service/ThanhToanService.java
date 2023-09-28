@@ -5,6 +5,7 @@
 package com.hmh.service;
 
 import com.hmh.pojo.HoaDon;
+import com.hmh.pojo.LoaiThanhToan;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import java.util.List;
@@ -19,10 +20,12 @@ public interface ThanhToanService {
     List<HoaDon> getHoaDon(Map<String, String> params);
 
     HoaDon getHoaDonById(int id);
-    
-    boolean xacNhanHD(int idHd);
-    
+
+    boolean xacNhanHD(int idHd, int loaiThanhToanId);
+
     List<HoaDon> timKiemPDK(Map<String, String> params);
-    
+
     List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn);
+
+    List<LoaiThanhToan> getDSLoaiThanhToan();
 }

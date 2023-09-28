@@ -22,14 +22,14 @@
             <div class="TK_Thang">
                 <h2>Thống Kê Bệnh Nhân Theo Tháng</h2>
                 <form action="${pageContext.request.contextPath}/admin/thongkebenhnhan" method="post">
-                    <label for="year">Chọn năm</label>
+                    <p id="year1" for="year">Chọn năm</p>
                     <select id="year" name="year">
                         <c:forEach var="year" begin="2020" end="2030">
                             <option value="${year}">${year}</option>
                         </c:forEach>
                     </select>
                     <br>
-                    <label for="month">Chọn tháng</label>
+                    <p id="month1" for="month">Chọn tháng</p>
                     <select id="month" name="month">
                         <c:forEach var="month" begin="1" end="12">
                             <option value="${month}">Tháng ${month}</option>
@@ -52,17 +52,17 @@
             <div class="TK_Quy TK_Quy11">
                 <h2>Thống Kê Bệnh Nhân Theo Quý</h2>
                 <form style="text-align: justify" action="${pageContext.request.contextPath}/admin/thongkebenhnhan" method="post">
-                    <label for="year">Chọn năm</label>
+                    <p id="year2" for="year">Chọn năm</p>
                     <select id="year" name="year">
                         <c:forEach var="year" begin="2020" end="2030">
                             <option value="${year}">${year}</option>
                         </c:forEach>
                     </select>
                     <br>
-                    <label for="month">Chọn quý</label>
+                    <p id="month2" for="month">Chọn quý</p>
                     <select id="month" name="month">
                         <c:forEach var="month" begin="1" end="4">
-                            <option value="${month}">Tháng ${month}</option>
+                            <option value="${month}">Quý ${month}</option>
                         </c:forEach>
                     </select>
                     <br>
@@ -77,82 +77,83 @@
 
     </nav>
 
+ 
+
+</main>
 
 
 
 
 
 
-
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
 //        var khachHangCount = ${countKhachHang};
-        var benhNhanCount = ${countBenhNhan};
-        var TrangThaiKhamCount = ${countTrangThaiKham};
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Loại', 'Số lượng'],
+    var benhNhanCount = ${countBenhNhan};
+    var TrangThaiKhamCount = ${countTrangThaiKham};
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Loại', 'Số lượng'],
 
-                ['Bệnh Nhân Chưa Khám', benhNhanCount],
-                ['Bệnh Nhân Đã Khám', TrangThaiKhamCount]
+            ['Bệnh Nhân Chưa Khám', benhNhanCount],
+            ['Bệnh Nhân Đã Khám', TrangThaiKhamCount]
 
-            ]);
+        ]);
 
-            var options = {
-                chart: {
-                    title: 'Thống kê số lượng',
-                    subtitle: 'số lượng bệnh nhân của bệnh viện'
-                },
-                bars: 'vertical'
-            };
+        var options = {
+            chart: {
+                title: 'Thống kê số lượng',
+                subtitle: 'số lượng bệnh nhân của bệnh viện'
+            },
+            bars: 'vertical'
+        };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-
-
-            chart.draw(data, options);
-        }
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 
 
-
-
-    </script>
-
-
-
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        var benhNhanCount1 = ${countBenhNhan1};
-        var TrangThaiKhamCount1 = ${countTrangThaiKham1};
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Loại', 'Số lượng'],
-
-                ['Bệnh Nhân Chưa Khám', benhNhanCount1],
-                ['Bệnh Nhân Đã Khám', TrangThaiKhamCount1]
-
-            ]);
-
-            var options = {
-                chart: {
-                    title: 'Thống kê số lượng',
-                    subtitle: 'số lượng bệnh nhân của bệnh viện'
-                },
-                bars: 'vertical'
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
-
-
-            chart.draw(data, options);
-        }
+        chart.draw(data, options);
+    }
 
 
 
 
-    </script>
+</script>
+
+
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    var benhNhanCount1 = ${countBenhNhan1};
+    var TrangThaiKhamCount1 = ${countTrangThaiKham1};
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Loại', 'Số lượng'],
+
+            ['Bệnh Nhân Chưa Khám', benhNhanCount1],
+            ['Bệnh Nhân Đã Khám', TrangThaiKhamCount1]
+
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Thống kê số lượng',
+                subtitle: 'số lượng bệnh nhân của bệnh viện'
+            },
+            bars: 'vertical'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+
+
+        chart.draw(data, options);
+    }
+
+
+
+
+</script>

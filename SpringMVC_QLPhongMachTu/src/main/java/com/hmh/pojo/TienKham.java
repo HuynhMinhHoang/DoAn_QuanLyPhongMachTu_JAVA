@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -67,6 +68,7 @@ public class TienKham implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<HoaDon> getHoaDonSet() {
         return hoaDonSet;
     }

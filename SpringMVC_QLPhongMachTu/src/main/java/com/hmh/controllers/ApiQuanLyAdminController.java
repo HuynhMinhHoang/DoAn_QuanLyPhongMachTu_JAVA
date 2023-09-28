@@ -50,10 +50,15 @@ public class ApiQuanLyAdminController {
 //    public void xoaThuoc(@PathVariable(value = "id") int id) {
 //        this.quanLyThuocService.xoaThuoc(id);
 //    }
-
     @DeleteMapping("/admin/lichtruc/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void xoaLichTruc(@PathVariable(value = "id") int id) {
         this.lichTrucService.xoaLichTruc(id);
+    }
+
+    @DeleteMapping("/admin/dichvu/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void xoaDichVu(@PathVariable(value = "id") int id) {
+        this.quanLyThuocService.xoaDichVu(id);
     }
 }

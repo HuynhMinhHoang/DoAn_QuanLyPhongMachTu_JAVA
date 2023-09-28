@@ -130,10 +130,10 @@ public class DangKyKhamController {
         Date ngayGioHienTai = new Date();
         LocalDate ngayGioHienTaiLocalDate = ngayGioHienTai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        LocalDate ngayTaoPhieu = phieuDkyCuoiCung.getThoiGianTaophieu().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
+//        LocalDate ngayTaoPhieu = phieuDkyCuoiCung.getThoiGianTaophieu().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         if (pdk.getChonNgaykham() != null && !pdk.getThoiGianKham().isEmpty()) {
-            if (phieuDkyCuoiCung == null || !ngayTaoPhieu.equals(ngayGioHienTaiLocalDate)) {
+
+            if (phieuDkyCuoiCung == null || !ngayGioHienTaiLocalDate.equals(phieuDkyCuoiCung.getThoiGianTaophieu().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
                 this.lapDsKhamService.themPhieuDangKy(pdk);
                 return "redirect:/benhnhan/lichsukham";
             } else {

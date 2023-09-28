@@ -78,6 +78,8 @@ public class DonThuocController {
 
         List<ChiTietThuoc> danhSachThuoc = lichSuKhamService.getChiTietThuocByHoaDonId(id);
 
+        HoaDon hd = this.thanhToanService.getHoaDonById(id);
+
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "inline; filename=DonThuoc.pdf");
 
@@ -87,12 +89,12 @@ public class DonThuocController {
         PdfWriter.getInstance(document, out);
 
         document.open();
-//            document.add(new Paragraph("TOA THUOC PHONG MACH HEALTH COUCH\n"
-//                    + "\nID Phieu Dang Ky: " + phieuDangKy.getIdPhieudk()
-//                    + "\nTen benh nhan: " + phieuDangKy.getIdBn().getHoTen()
-//                    + "\nNgay kham: " + phieuDangKy.getChonNgaykham()
-//                    + "\nKet luan: " + phieuDangKy.getIdPk().getKetLuan())
-//            );
+        document.add(new Paragraph("TOA THUOC PHONG MACH HEALTH COUCH\n"
+                + "\nTen benh nhan: " + hd.getIdPhieudky().getIdBn().getHoTen()
+                + "\nNgay kham: " + hd.getIdPhieudky().getChonNgaykham()
+                + "\nTrieu chung: " + hd.getIdPhieudky().getIdPk().getTrieuChung()
+                + "\nKet luan: " + hd.getIdPhieudky().getIdPk().getKetLuan()
+        ));
         for (ChiTietThuoc t : danhSachThuoc) {
             document.add(new Paragraph("\n---------------------------------------------"));
             document.add(new Paragraph("Ten thuoc: " + t.getIdThuoc().getTenThuoc()));

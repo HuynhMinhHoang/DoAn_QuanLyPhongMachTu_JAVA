@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
+                                <form:input type="file" id="file" path="file" placeholder="Upload Avatar" required="true"/>
                             </div>
                         </div>
                     </div>

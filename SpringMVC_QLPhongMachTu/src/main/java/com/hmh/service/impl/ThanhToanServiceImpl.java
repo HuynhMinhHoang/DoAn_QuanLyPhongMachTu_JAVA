@@ -5,6 +5,7 @@
 package com.hmh.service.impl;
 
 import com.hmh.pojo.HoaDon;
+import com.hmh.pojo.LoaiThanhToan;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.ThanhToanRepository;
@@ -36,8 +37,8 @@ public class ThanhToanServiceImpl implements ThanhToanService {
     }
 
     @Override
-    public boolean xacNhanHD(int idHd) {
-        return this.thanhToanRepository.xacNhanHD(idHd);
+    public boolean xacNhanHD(int idHd, int loaiThanhToanId) {
+        return this.thanhToanRepository.xacNhanHD(idHd, loaiThanhToanId);
     }
 
     @Override
@@ -48,6 +49,11 @@ public class ThanhToanServiceImpl implements ThanhToanService {
     @Override
     public List<HoaDon> getHoaDonByBenhNhanId(TaiKhoan idBn) {
         return this.thanhToanRepository.getHoaDonByBenhNhanId(idBn);
+    }
+
+    @Override
+    public List<LoaiThanhToan> getDSLoaiThanhToan() {
+        return this.thanhToanRepository.getDSLoaiThanhToan();
     }
 
 }

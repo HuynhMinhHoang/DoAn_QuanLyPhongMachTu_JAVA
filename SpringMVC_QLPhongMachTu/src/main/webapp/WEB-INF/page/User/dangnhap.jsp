@@ -71,6 +71,9 @@
             <div class="password">
                 <a href="<c:url value ="/quenmatkhau"/>" style="color: rgb(20, 20, 20); font-size: 15px"><p>Quên mật khẩu?</p></a>
             </div>
+
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/SpringMVC_QLPhongMachTu/dangnhap&response_type=code&client_id=619668896618-qegtodept69nvdkskrpedf8os5c03uol.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>
+        
         </form>
     </div>
 </nav>

@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -40,11 +41,13 @@ public class DichVu implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_dv")
     private Integer idDv;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "ten_dv")
     private String tenDv;
     @Column(name = "gia_dv")
     private Long giaDv;
+    @OneToMany(mappedBy = "dvDanhgia")
+    private Set<DanhGiaDv> danhGiaDvSet;
     @OneToMany(mappedBy = "idDv")
     private Set<ChiTietDv> chiTietDvSet;
 
@@ -80,6 +83,17 @@ public class DichVu implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaDv> getDanhGiaDvSet() {
+        return danhGiaDvSet;
+    }
+
+    public void setDanhGiaDvSet(Set<DanhGiaDv> danhGiaDvSet) {
+        this.danhGiaDvSet = danhGiaDvSet;
+    }
+
+    @XmlTransient
+    @JsonIgnore
     public Set<ChiTietDv> getChiTietDvSet() {
         return chiTietDvSet;
     }

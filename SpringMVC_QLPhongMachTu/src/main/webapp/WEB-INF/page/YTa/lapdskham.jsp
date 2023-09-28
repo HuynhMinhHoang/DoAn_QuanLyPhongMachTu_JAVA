@@ -72,6 +72,7 @@
                     <th>ID</th>
                     <th>ID Bệnh nhân</th>
                     <th>Email</th>
+                    <th>Số điện thoại</th>
                     <th>Ngày hẹn khám</th>
                     <th>Thời gian</th>
                     <th>Bác sĩ</th>
@@ -93,6 +94,7 @@
                                 </td>
                                 <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
                                 <td>${p.idBn.email}</td>
+                                <td>${p.idBn.sdt}</td>
                                 <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
 
                                 <td>${p.thoiGianKham}</td>
@@ -207,6 +209,7 @@
                     <th>ID</th>
                     <th>ID Bệnh nhân</th>
                     <th>Email</th>
+                    <th>Số điện thoại</th>
                     <th>Ngày hẹn khám</th>
                     <th>Thời gian</th>
                     <th>Bác sĩ</th>
@@ -228,6 +231,7 @@
                                 </td>
                                 <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
                                 <td>${p.idBn.email}</td>
+                                <td>${p.idBn.sdt}</td>
                                 <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
 
                                 <td>${p.thoiGianKham}</td>

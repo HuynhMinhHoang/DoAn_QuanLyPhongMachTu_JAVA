@@ -4,6 +4,7 @@
  */
 package com.hmh.repository.impl;
 
+import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.DichVu;
 import com.hmh.pojo.DonviThuoc;
 import com.hmh.pojo.LoaiThuoc;
@@ -171,6 +172,25 @@ public class QuanLyThuocRepositoryImpl implements QuanLyThuocRepository {
         Query q = session.createQuery(query);
         List<Thuoc> results = q.getResultList();
         return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public boolean xoaDichVu(int id) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        DichVu dv = this.getDichVuById(id);
+        try {
+            session.delete(dv);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public DichVu getDichVuById(int id) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        return session.get(DichVu.class, id);
     }
 
 }

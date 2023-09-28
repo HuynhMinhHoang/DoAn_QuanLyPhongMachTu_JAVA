@@ -6,6 +6,7 @@ package com.hmh.repository;
 
 import com.hmh.pojo.ChiTietDv;
 import com.hmh.pojo.ChiTietThoiGianTruc;
+import com.hmh.pojo.DanhGiaBs;
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
@@ -44,4 +45,8 @@ public interface QuanLyTaiKhoanRepository {
     public List<HoaDon> getHoaDonByPDK(int idTaiKhoan);
 
     boolean xoaHoaDonByPDK(int idTaiKhoan);
+    
+    public List<DanhGiaBs> getDanhGiaBsByPDK(int idTaiKhoan);
+
+    boolean xoaDanhGiaBsByPDK(int idTaiKhoan);
 }

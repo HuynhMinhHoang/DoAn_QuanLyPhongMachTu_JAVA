@@ -1240,6 +1240,8 @@ tbody tr.hide {
     box-shadow: 0px 5px 10px 0 rgba(220,53,69, 0.5);
 }
 
+
+
 #Username{
     color:#dc3545;
 }
@@ -1377,7 +1379,7 @@ tbody tr:nth-child(even) {
 }
 
 .table__body1{
-    width: 90%;
+    width: 95%;
     margin-right: 50px;
 }
 
@@ -1658,6 +1660,7 @@ tbody tr:nth-child(even) {
 
 /*lichsukhambenh*/
 main.lskham{
+    width: 95%;
     margin: auto;
     border-radius: 0px;
     margin-top:40px;
@@ -1668,6 +1671,14 @@ main.lskham{
     width: 100%;
 
 }
+
+main.lsthanhtoan{
+    width: 95%;
+}
+
+/*.lsthanhtoan1 table thead tr th{
+    font-size: 17px;
+}*/
 
 .text-lsk{
     color: #136740;
@@ -1711,7 +1722,9 @@ main.lskham{
     margin-top: 50px;
     text-align: center;
 }
-
+.one211111{
+    margin-top: 20px;
+}
 .dkylich{
     height: 470px;
 }
@@ -1843,6 +1856,27 @@ main.lskham{
     font-size: 15px;
     border-radius: 5px;
     box-shadow: 0px 2px 15px 0 #dc3545;
+}
+
+/*.submitdkk111115423 a{
+    width: 150px;
+    margin-top: 0px;
+    background: rgb(130, 201, 30);
+    box-shadow: 0px 2px 15px 0 rgb(130, 201, 30);
+    padding: 14px;
+    margin-bottom: 30px;
+}*/
+
+.submitdkk111115423 a{
+    background: none;
+    box-shadow:none;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+.submitdkk111115423 a img{
+    width: 50px;
+    height: 50px;
 }
 
 .submitdkk111115 a:hover{
@@ -2152,7 +2186,7 @@ main.tableQLTK{
 }
 
 .TK_Quy form button{
-    margin-top: 30px;
+    margin-top: 15px;
     width: 200px;
     padding: 12px;
     font-size: 17px;
@@ -2170,6 +2204,8 @@ main.tableQLTK{
 
 .TK_Quy form select{
     padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    margin-right: 10px;
 }
 
 
@@ -2217,6 +2253,13 @@ main.tableQLTK{
 
 }
 
+#myChart2{
+    margin-left: 345px !important;
+    width: 750px  !important;
+    height: 720px !important;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
 
 .bieudo_TK{
     margin-top: 50px;
@@ -2238,12 +2281,55 @@ main.tableQLTK{
 
 }
 
+main.danhgiaBS{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+
+.text_DGBS{
+    background: #E9F9E7;
+    padding: 20px;
+    border-radius: 30px 30px 0px 0px ;
+    width: 70%;
+    margin: auto;
+}
+
+/*.text_DGBS h5{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    color: #842029;
+}*/
+
 main.tableTKDT{
     margin-bottom: 50px;
 }
 
 #textTKDT{
     font-size: 30px;
+}
+
+#textTKDT1{
+    margin-top: 20px;
+    margin-bottom:0px;
+}
+#year1{
+    margin-bottom: 10px;
+}
+
+#month1{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#year2{
+    margin-bottom: 10px;
+}
+
+#month2{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*taohoadon*/
@@ -2298,8 +2384,8 @@ main.tableTKDT{
 
 .thongtin_taohoadon1 div p {
     padding: 20px;
-    background: #e9f9e7;
-    border-radius: 150px;
+    background: #ceffc8;
+    border-radius:20px;
 }
 
 .thongtin_taohoadon1 div p{
@@ -2416,8 +2502,10 @@ main.table324234{
 .tienkhachdua{
     display: flex;
     justify-content: space-evenly;
+    align-items: flex-end;
 }
 .tienkhachdua div {
+
     margin-top: 20px;
     text-align: center;
 
@@ -2428,6 +2516,10 @@ main.table324234{
     border-radius: 10px;
     font-size: 20px;
     padding: 7px;
+}
+
+#loaiThanhToan{
+    width: 250px !important;
 }
 
 .tienkham_admin{
@@ -2491,6 +2583,7 @@ main.table324234{
 
 .div_themDV{
     display: flex;
+    justify-content: center;
     align-items: baseline;
 }
 
@@ -2512,3 +2605,195 @@ main.table324234{
     margin-top: 15px;
 }
 
+/*danhgia*/
+.nav_DGBS{
+    padding: 5px;
+}
+.containerBS{
+    position: relative;
+    width: 850px;
+    height: 550px;
+    background: #ffffff;
+    margin-top: 90px !important;
+    margin-bottom: 90px !important;
+    padding: 50px;
+    box-shadow: 0px 5px 10px 0 rgb(241 241 241);
+    /* border: 1px solid #444; */
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+.containerBS .post{
+    display: none;
+}
+.containerBS .text{
+    font-size: 25px;
+    color: #666;
+    font-weight: 500;
+}
+.containerBS .edit{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+}
+.containerBS .edit:hover{
+    text-decoration: underline;
+}
+
+
+.containerBS .star-widget input{
+    display: none;
+}
+
+.star-widget label{
+    font-size: 45px;
+    color: #dddddd;
+    margin: auto !important;
+    padding: 10px;
+    float: right;
+    border: 2px black;
+    transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: #fd4;
+    text-shadow: 0 0 20px #f9dc12;
+}
+input:checked ~ label{
+    color: #fd4;
+
+}
+/*input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #FFEE77;
+}*/
+/*input#rate-4:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #FFEE77;
+}
+input#rate-3:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #FFEE77;
+}
+input#rate-2:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #FFEE77;
+}
+input#rate-1:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #FFEE77;
+}*/
+
+
+#rate-1:checked ~ nav label:before{
+    content: "Rất tệ      ";
+    color: black !important;
+}
+#rate-2:checked ~ nav label:before{
+    content: "Không hài lòng ";
+    color: black !important;
+}
+#rate-3:checked ~ nav label:before{
+    content: "Bình thường    ";
+    color: black !important;
+}
+#rate-4:checked ~ nav label:before{
+    content: "Hài lòng      ";
+    color: black !important;
+}
+#rate-5:checked ~ nav label:before{
+    content: "Tuyệt vời   ";
+    color: black !important;
+}
+.containerBS nav{
+    display: none;
+}
+input:checked ~ nav{
+    display: block;
+}
+nav label{
+    font-size: 18px !important;
+    width: 100%;
+    font-size: 18px;
+    color: #fe7;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.textarea{
+    display: block !important;
+}
+nav .textarea{
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+nav .textarea{
+    height:220px;
+    width: 100%;
+    outline: none;
+    color: black;
+    border: none;
+    padding: 50px !important;
+    background: #F5F4F3;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+    word-wrap: break-word;
+}
+.textarea:focus{
+    border-color: #444;
+}
+nav .btn{
+    height: 55px;
+    width: 100%;
+    margin: 15px 0;
+
+}
+
+.Huy{
+    margin-top: 20px;
+    width: 200px;
+    padding: 12px;
+    font-size: 17px;
+    border: 0px solid rgb(43, 43, 43);
+    background-color: rgb(130, 201, 30);
+    color: white;
+    border-radius: 20px;
+    /*    box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.5);*/
+    margin: auto;
+}
+nav .btn button{
+    margin-top: 10px;
+    width: 200px;
+    padding: 12px;
+    font-size: 17px;
+    border: 0px solid rgb(43, 43, 43);
+    background-color: #0dcaf0;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0 #45d4f1;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/*form .btn button:hover{
+    background: #1b1b1b;
+}*/
+
+.form_DGBS{
+    margin-top: 50px !important;
+    background-image: url('khambenh.png');
+    border-radius: 50px;
+    box-shadow: 0px 5px 10px 0 #c8f6ff;
+}

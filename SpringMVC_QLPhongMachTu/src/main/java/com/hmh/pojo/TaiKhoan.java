@@ -4,7 +4,6 @@
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -27,6 +26,7 @@ import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -69,7 +69,7 @@ public class TaiKhoan implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tk")
     private Integer idTk;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "ho_ten")
     private String hoTen;
     @Column(name = "ngay_sinh")
@@ -78,7 +78,7 @@ public class TaiKhoan implements Serializable {
     @Size(max = 45)
     @Column(name = "gioi_tinh")
     private String gioiTinh;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "dia_chi")
     private String diaChi;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -97,6 +97,12 @@ public class TaiKhoan implements Serializable {
     @Size(max = 1000)
     @Column(name = "avt")
     private String avt;
+    @OneToMany(mappedBy = "tkDanhgia")
+    private Set<DanhGiaDv> danhGiaDvSet;
+    @OneToMany(mappedBy = "tkDanhgia")
+    private Set<DanhGiaBs> danhGiaBsSet;
+    @OneToMany(mappedBy = "bsDanhgia")
+    private Set<DanhGiaBs> danhGiaBsSet1;
     @JoinColumn(name = "id_role", referencedColumnName = "id_role")
     @ManyToOne
     private UserRole idRole;
@@ -196,6 +202,36 @@ public class TaiKhoan implements Serializable {
         this.avt = avt;
     }
 
+    @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaDv> getDanhGiaDvSet() {
+        return danhGiaDvSet;
+    }
+
+    public void setDanhGiaDvSet(Set<DanhGiaDv> danhGiaDvSet) {
+        this.danhGiaDvSet = danhGiaDvSet;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaBs> getDanhGiaBsSet() {
+        return danhGiaBsSet;
+    }
+
+    public void setDanhGiaBsSet(Set<DanhGiaBs> danhGiaBsSet) {
+        this.danhGiaBsSet = danhGiaBsSet;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaBs> getDanhGiaBsSet1() {
+        return danhGiaBsSet1;
+    }
+
+    public void setDanhGiaBsSet1(Set<DanhGiaBs> danhGiaBsSet1) {
+        this.danhGiaBsSet1 = danhGiaBsSet1;
+    }
+
     public UserRole getIdRole() {
         return idRole;
     }
@@ -205,6 +241,7 @@ public class TaiKhoan implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<PhieuDangKy> getPhieuDangKySet() {
         return phieuDangKySet;
     }
@@ -214,6 +251,7 @@ public class TaiKhoan implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<PhieuDangKy> getPhieuDangKySet1() {
         return phieuDangKySet1;
     }
@@ -223,6 +261,7 @@ public class TaiKhoan implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<PhieuDangKy> getPhieuDangKySet2() {
         return phieuDangKySet2;
     }
@@ -232,6 +271,7 @@ public class TaiKhoan implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<ChiTietThoiGianTruc> getChiTietThoiGianTrucSet() {
         return chiTietThoiGianTrucSet;
     }

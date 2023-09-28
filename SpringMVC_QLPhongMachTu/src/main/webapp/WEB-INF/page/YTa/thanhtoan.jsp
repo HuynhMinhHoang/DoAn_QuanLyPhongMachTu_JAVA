@@ -42,6 +42,7 @@
 
                         <th id="User_Role">Tổng tiền</th>
                         <th>Ngày thanh toán</th>
+                        <th>Hình thức</th>
                         <th></th>
 
                     </tr>
@@ -61,7 +62,7 @@
                             <td>
                                 <fmt:formatDate value="${d.ngayThanhToan}" pattern="EEEE, dd/MM/yyyy HH:mm:ss"/> 
                             </td>
-
+                            <td>${d.loaiThanhToan.tenLoaiThanhToan}</td>
                             <td>
                                 <c:choose>
                                     <c:when test="${d.ngayThanhToan == null}">

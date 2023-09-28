@@ -19,7 +19,7 @@
 
             <form action="${pageContext.request.contextPath}/admin/thongkedoanhthu" method="post">
                 <h2 id="textTKDT">Thống Kê Doanh Thu</h2>
-                <label for="year">Chọn năm</label>
+                <p id="textTKDT1" for="year">Chọn năm</p>
                 <select id="year" name="year">
                     <c:forEach var="year" begin="2020" end="2030">
                         <option value="${year}">${year}</option>

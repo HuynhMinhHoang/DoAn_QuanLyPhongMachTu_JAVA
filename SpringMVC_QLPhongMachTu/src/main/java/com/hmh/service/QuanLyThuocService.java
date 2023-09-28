@@ -36,9 +36,13 @@ public interface QuanLyThuocService {
 
     boolean themDichVu(DichVu dv);
 
+    boolean xoaDichVu(int id);
+
+    DichVu getDichVuById(int id);
+
     List<Thuoc> timKiemThuoc(Map<String, String> params);
-    
+
     List<LoaiThuoc> getLoaiThuoc();
-    
+
     Thuoc getThuocByLoaiThuoc(int id);
 }

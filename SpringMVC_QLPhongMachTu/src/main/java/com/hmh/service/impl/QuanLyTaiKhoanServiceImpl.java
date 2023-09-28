@@ -72,6 +72,7 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
     @Override
     public boolean xoaTaiKhoan(int id) {
         if (quanLyTaiKhoanRepository.getChiTietDichVuByPdk(id) != null) {
+            this.quanLyTaiKhoanRepository.xoaDanhGiaBsByPDK(id);
             this.quanLyTaiKhoanRepository.xoaCTDichVuBypdky(id);
             this.quanLyTaiKhoanRepository.xoaHoaDonByPDK(id);
             this.quanLyTaiKhoanRepository.xoaCTThoiGianTrucByTK(id);

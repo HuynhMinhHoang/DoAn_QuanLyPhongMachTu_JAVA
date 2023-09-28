@@ -72,19 +72,18 @@ public class TaoHoaDonController {
 
     @GetMapping("/yta/taohoadon")
     public String taohoadon(Model model, Authentication authentication) {
-//        model.addAttribute("addHoaDon", new HoaDon());
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
         }
-
+        model.addAttribute("listDSLoaiThanhToan", this.thanhToanService.getDSLoaiThanhToan());
         return "taohoadon";
     }
 
     @GetMapping("/yta/taohoadon/{id}")
     public String taohoadonById(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication) {
-
+        model.addAttribute("addHoaDon", new HoaDon());
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
@@ -92,7 +91,19 @@ public class TaoHoaDonController {
         }
 
         model.addAttribute("idHD", this.thanhToanService.getHoaDonById(id));
+        model.addAttribute("listDSLoaiThanhToan", this.thanhToanService.getDSLoaiThanhToan());
 
+        return "taohoadon";
+    }
+
+    @PostMapping("/yta/taohoadon")
+    public String xacNhanThanhToan(Model model, @ModelAttribute(value = "addHoaDon") HoaDon hd,
+            @RequestParam("id") int id, @RequestParam("loaiThanhToan") int loaiThanhToanId) {
+
+        if (this.thanhToanService.xacNhanHD(id, loaiThanhToanId)) {
+            return "redirect:/yta/thanhtoan";
+        }
+        model.addAttribute("listDSLoaiThanhToan", this.thanhToanService.getDSLoaiThanhToan());
         return "taohoadon";
     }
 
@@ -156,12 +167,4 @@ public class TaoHoaDonController {
         }
     }
 
-    @PostMapping("/yta/taohoadon")
-    public String xacNhanThanhToan(Model model, @ModelAttribute(value = "addHoaDon") HoaDon hd, @RequestParam("id") int id) {
-
-        if (this.thanhToanService.xacNhanHD(id)) {
-            return "redirect:/yta/thanhtoan";
-        }
-        return "taohoadon";
-    }
 }

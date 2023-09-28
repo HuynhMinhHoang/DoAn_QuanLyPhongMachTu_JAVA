@@ -1,5 +1,5 @@
 function xoaTaiKhoan(path) {
-    if (confirm("Bạn chắc chắn muốn xóa Tài Khoản này không?") === true) {
+    if (confirm("Bạn chắc chắn muốn xóa Tài Khoản này không? Nếu xóa tài khoản này sẽ xóa toàn bộ dữ liệu liên quan!") === true) {
         fetch(path, {
             method: "delete"
         }).then(res => {
@@ -14,6 +14,20 @@ function xoaTaiKhoan(path) {
 
 function xoaBillThuoc(path) {
     if (confirm("Bạn chắc chắn muốn xóa Thuốc này không?") === true) {
+        fetch(path, {
+            method: "delete"
+        }).then(res => {
+            if (res.status === 204)
+                location.reload();
+            else
+                alert("Xóa không thành công!");
+        })
+    }
+
+}
+
+function xoaDichVu(path) {
+    if (confirm("Bạn chắc chắn muốn xóa Dịch vụ này không?") === true) {
         fetch(path, {
             method: "delete"
         }).then(res => {

@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -45,10 +46,10 @@ public class Thuoc implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_thuoc")
     private Integer idThuoc;
-    @Size(max = 50)
+    @Size(max = 500)
     @Column(name = "ten_thuoc")
     private String tenThuoc;
-    @Size(max = 50)
+    @Size(max = 500)
     @Column(name = "xuat_xu")
     private String xuatXu;
     @Column(name = "gia_thuoc")
@@ -139,6 +140,7 @@ public class Thuoc implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<ChiTietThuoc> getChiTietThuocSet() {
         return chiTietThuocSet;
     }

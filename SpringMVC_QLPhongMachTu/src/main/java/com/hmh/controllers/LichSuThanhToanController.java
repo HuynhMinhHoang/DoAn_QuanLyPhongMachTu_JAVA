@@ -7,18 +7,21 @@ package com.hmh.controllers;
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.LichSuKhamRepository;
+import com.hmh.service.DanhGiaService;
 import com.hmh.service.LichSuKhamService;
 import com.hmh.service.TaiKhoanService;
 import com.hmh.service.ThanhToanService;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -35,6 +38,9 @@ public class LichSuThanhToanController {
 
     @Autowired
     private LichSuKhamService lichSuKhamService;
+
+    @Autowired
+    private DanhGiaService danhGiaService;
 
     @Autowired
     private ThanhToanService thanhToanService;

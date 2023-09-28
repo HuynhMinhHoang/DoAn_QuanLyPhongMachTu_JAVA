@@ -72,6 +72,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/User/donthuoc.jsp" />
     </definition>
     
+    <definition name="danhgiaBS" extends="baseLayout">
+        <put-attribute name="title" value="Đánh giá bác sĩ khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/danhgiaBS.jsp" />
+    </definition>
+    
+    <definition name="danhgiaDV" extends="baseLayout">
+        <put-attribute name="title" value="Đánh giá dịch vụ khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/danhgiaDV.jsp" />
+    </definition>
+    
     
     <definition name="doimatkhau" extends="baseLayout">
         <put-attribute name="title" value="Đổi mật khẩu" />
@@ -150,7 +162,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <definition name="quanlythuoc" extends="baseLayoutAdmin">
         <put-attribute name="title" value="Quản lý thuốc" />
         <put-attribute name="content"
-                       value="/WEB-INF/page/Admin/quanlythuoc.jsp" />
+                       value="/WEB-INF/page/QuanLy/quanlythuoc.jsp" />
     </definition>
     
     <definition name="quanlytaikhoan" extends="baseLayoutAdmin">
@@ -170,22 +182,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="content"
                        value="/WEB-INF/page/Admin/thongkedoanhthu.jsp" />
     </definition>
+    
+    <definition name="thongkedanhgiaBS" extends="baseLayoutAdmin">
+        <put-attribute name="title" value="Thống kê đánh giá " />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/Admin/thongkedanhgiaBS.jsp" />
+    </definition>
+    
     <definition name="lichtruc" extends="baseLayoutAdmin">
         <put-attribute name="title" value="Lịch Trực" />
         <put-attribute name="content"
-                       value="/WEB-INF/page/Admin/lichtruc.jsp" />
+                       value="/WEB-INF/page/QuanLy/lichtruc.jsp" />
     </definition>
     
     <definition name="tienkham" extends="baseLayoutAdmin">
         <put-attribute name="title" value="Thay đổi tiền khám" />
         <put-attribute name="content"
-                       value="/WEB-INF/page/Admin/tienkham.jsp" />
+                       value="/WEB-INF/page/QuanLy/tienkham.jsp" />
     </definition>
     
     <definition name="dichvu" extends="baseLayoutAdmin">
         <put-attribute name="title" value="Thêm dịch vụ" />
         <put-attribute name="content"
-                       value="/WEB-INF/page/Admin/dichvu.jsp" />
+                       value="/WEB-INF/page/QuanLy/dichvu.jsp" />
     </definition>
     
 </tiles-definitions>

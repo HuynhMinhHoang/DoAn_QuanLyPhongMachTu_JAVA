@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,21 +37,26 @@ public class DichVuController {
     public String dichvu(Model model, @RequestParam(name = "err", required = false) String err) {
         model.addAttribute("listDV", this.khamBenhService.getDichVu());
         model.addAttribute("taoDV", new DichVu());
-         model.addAttribute("err", err);
+        model.addAttribute("err", err);
+        return "dichvu";
+    }
+
+    @GetMapping("/admin/dichvu/{id}")
+    public String updateThuoc(Model model, @PathVariable(value = "id") int id) {
+        model.addAttribute("taoDV", this.quanLyThuocService.getDichVuById(id));
+        model.addAttribute("listDV", this.khamBenhService.getDichVu());
         return "dichvu";
     }
 
     @PostMapping("/admin/dichvu")
     public String themDichVu(Model model, @ModelAttribute(value = "taoDV") DichVu dv, BindingResult rs) throws UnsupportedEncodingException {
-        String err="";
+        String err = "";
         if (!rs.hasErrors()) {
             if (!dv.getTenDv().isEmpty() && dv.getGiaDv() != null) {
                 if (quanLyThuocService.themDichVu(dv) == true) {
                     return "redirect:/admin/dichvu";
                 }
-            }
-            else
-            {
+            } else {
                 err = "Vui lòng nhập đầy đủ thông tin!";
                 return "redirect:/admin/dichvu" + "?err=" + URLEncoder.encode(err, "UTF-8");
             }
@@ -58,4 +64,5 @@ public class DichVuController {
 
         return "dichvu";
     }
+
 }

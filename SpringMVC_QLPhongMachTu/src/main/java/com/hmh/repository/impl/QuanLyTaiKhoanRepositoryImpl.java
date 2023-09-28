@@ -6,6 +6,7 @@ package com.hmh.repository.impl;
 
 import com.hmh.pojo.ChiTietDv;
 import com.hmh.pojo.ChiTietThoiGianTruc;
+import com.hmh.pojo.DanhGiaBs;
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
@@ -153,7 +154,6 @@ public class QuanLyTaiKhoanRepositoryImpl implements QuanLyTaiKhoanRepository {
 
     }
 
-
     @Override
     public List<ChiTietThoiGianTruc> getCTThoiGianTrucByTK(int idTaiKhoan) {
         Session session = this.factory.getObject().getCurrentSession();
@@ -241,6 +241,39 @@ public class QuanLyTaiKhoanRepositoryImpl implements QuanLyTaiKhoanRepository {
         try {
             for (HoaDon dh : dhs) {
                 session.delete(dh);
+            }
+            return true;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public List<DanhGiaBs> getDanhGiaBsByPDK(int idTaiKhoan) {
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<DanhGiaBs> query = builder.createQuery(DanhGiaBs.class);
+        Root root = query.from(DanhGiaBs.class);
+        List<HoaDon> pdk = this.getHoaDonByPDK(idTaiKhoan);
+
+        if (pdk.size() > 0) {
+            for (HoaDon dk : pdk) {
+                query.select(root).where(builder.equal(root.get("hdDanhgia").get("idHoadon"), dk.getIdHoadon()));
+                Query q = session.createQuery(query);
+                return q.getResultList();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean xoaDanhGiaBsByPDK(int idTaiKhoan) {
+        Session session = this.factory.getObject().getCurrentSession();
+        List<DanhGiaBs> dhs = this.getDanhGiaBsByPDK(idTaiKhoan);
+        try {
+            for (DanhGiaBs dg : dhs) {
+                session.delete(dg);
             }
             return true;
         } catch (HibernateException e) {

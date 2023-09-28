@@ -6,6 +6,7 @@ package com.hmh.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -49,6 +53,13 @@ public class HoaDon implements Serializable {
     private Long tienThuoc;
     @Column(name = "tien_dv")
     private Long tienDv;
+    @OneToMany(mappedBy = "hdDanhgia")
+    private Set<DanhGiaDv> danhGiaDvSet;
+    @OneToMany(mappedBy = "hdDanhgia")
+    private Set<DanhGiaBs> danhGiaBsSet;
+    @JoinColumn(name = "loai_thanh_toan", referencedColumnName = "id_loai_thanh_toan")
+    @ManyToOne
+    private LoaiThanhToan loaiThanhToan;
     @JoinColumn(name = "id_phieudky", referencedColumnName = "id_phieudk")
     @ManyToOne
     private PhieuDangKy idPhieudky;
@@ -93,6 +104,34 @@ public class HoaDon implements Serializable {
 
     public void setTienDv(Long tienDv) {
         this.tienDv = tienDv;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaDv> getDanhGiaDvSet() {
+        return danhGiaDvSet;
+    }
+
+    public void setDanhGiaDvSet(Set<DanhGiaDv> danhGiaDvSet) {
+        this.danhGiaDvSet = danhGiaDvSet;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Set<DanhGiaBs> getDanhGiaBsSet() {
+        return danhGiaBsSet;
+    }
+
+    public void setDanhGiaBsSet(Set<DanhGiaBs> danhGiaBsSet) {
+        this.danhGiaBsSet = danhGiaBsSet;
+    }
+
+    public LoaiThanhToan getLoaiThanhToan() {
+        return loaiThanhToan;
+    }
+
+    public void setLoaiThanhToan(LoaiThanhToan loaiThanhToan) {
+        this.loaiThanhToan = loaiThanhToan;
     }
 
     public PhieuDangKy getIdPhieudky() {

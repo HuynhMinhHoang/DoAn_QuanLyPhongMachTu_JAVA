@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -98,6 +99,7 @@ public class PhieuKhamBenh implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<PhieuDangKy> getPhieuDangKySet() {
         return phieuDangKySet;
     }
@@ -107,6 +109,7 @@ public class PhieuKhamBenh implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public Set<ChiTietThuoc> getChiTietThuocSet() {
         return chiTietThuocSet;
     }

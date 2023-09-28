@@ -58,10 +58,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             } else if (authority.getAuthority().equals("ROLE_BENHNHAN")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/benhnhan/donthuoc");
                 return;
+            } else if (authority.getAuthority().equals("ROLE_BENHNHAN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/benhnhan/danhgiaBS");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_BENHNHAN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/benhnhan/danhgiaDV");
+                return;
             } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/quanlytaikhoan");
                 return;
-            } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (authority.getAuthority().equals("ROLE_QUANLY")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/quanlythuoc");
                 return;
             } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
@@ -71,10 +77,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/thongkedoanhthu");
                 return;
             } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/thongkedanhgiaBS");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_QUANLY")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/lichtruc");
                 return;
-            } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (authority.getAuthority().equals("ROLE_QUANLY")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/tienkham");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_QUANLY")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/dichvu");
                 return;
             }
 

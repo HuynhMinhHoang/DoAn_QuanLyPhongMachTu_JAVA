@@ -13,7 +13,7 @@
 <c:url value="/yta/taohoadon" var="actions"/>
 
 <form:form method="post" action="${actions}" modelAttribute="addHoaDon">
-    <%--<form:hidden path="idHoadon" />--%>
+    <form:hidden path="idHoadon" />
     <%--<form:hidden path="ngayThanhToan" />--%>
 
     <nav class="login111 login111111">
@@ -93,7 +93,7 @@
 
                     </div>
                 </nav>
-                            
+
                 <div class="tienkhachdua">
                     <div>
                         <p>Tiền khách đưa</p>
@@ -104,6 +104,16 @@
                         <p>Tiền trả lại</p>
                         <input type="text" id="ketquaTien" readonly />
                     </div>
+
+                    <div class="hinhthuctt">
+                        <p>Hình thức</p>
+                        <form:select path="loaiThanhToan" class="form-select form-select1 form-select111" cssErrorClass="is-invalid">
+                            <c:forEach items="${listDSLoaiThanhToan}" var="c">
+                                <option value="${c.idLoaiThanhToan}" >${c.tenLoaiThanhToan}</option>
+                            </c:forEach>
+                        </form:select>
+                    </div>
+
                 </div>
 
                 <input type="hidden" name="id" value="${id}" />

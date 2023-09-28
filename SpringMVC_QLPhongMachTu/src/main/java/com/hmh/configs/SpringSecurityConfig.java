@@ -90,6 +90,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/benhnhan/donthuoc/**").access("hasRole('BENHNHAN')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/benhnhan/danhgiaBS/**").access("hasRole('BENHNHAN')");
+
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/benhnhan/danhgiaDV/**").access("hasRole('BENHNHAN')");
+
+        http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
@@ -114,7 +120,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/bacsi/capthuoc/**").access("hasRole('BACSI')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
-                antMatchers("/admin/quanlythuoc/**").access("hasRole('ADMIN')");
+                antMatchers("/admin/quanlythuoc/**").access("hasRole('QUANLY')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/admin/quanlytaikhoan/**").access("hasRole('ADMIN')");
@@ -126,10 +132,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/admin/thongkedoanhthu/**").access("hasRole('ADMIN')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
-                antMatchers("/admin/lichtruc/**").access("hasRole('ADMIN')");
+                antMatchers("/admin/lichtruc/**").access("hasRole('QUANLY')");
 
         http.authorizeRequests().antMatchers("/").permitAll().
-                antMatchers("/admin/tienkham/**").access("hasRole('ADMIN')");
+                antMatchers("/admin/tienkham/**").access("hasRole('QUANLY')");
+
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/admin/dichvu/**").access("hasRole('QUANLY')");
 
         http.csrf().disable();
     }

@@ -6,6 +6,7 @@ package com.hmh.repository.impl;
 
 import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.HoaDon;
+import com.hmh.pojo.LoaiThanhToan;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.ThanhToanRepository;
@@ -55,26 +56,21 @@ public class ThanhToanRepositoryImpl implements ThanhToanRepository {
     }
 
     @Override
-    public boolean xacNhanHD(int idHd) {
+    public boolean xacNhanHD(int idHd, int loaiThanhToanId) {
         Session session = this.sessionFactoryBean.getObject().getCurrentSession();
-//        HoaDon hd = session.get(HoaDon.class, idHd);
-
         HoaDon hd = this.thanhToanService.getHoaDonById(idHd);
 
-//        LoaiThanhToan ltt =
         java.util.Date currentDate = new java.util.Date();
 
         Timestamp timestamp = new Timestamp(currentDate.getTime());
 
         try {
-            if (hd.getIdHoadon() == null) {
-                session.save(hd);
-            } else {
-//                hd.setLoaiThanhToan(loaiThanhToan);
+            if (hd.getIdHoadon() != null) {
+                LoaiThanhToan loaiThanhToan = session.get(LoaiThanhToan.class, loaiThanhToanId);
+                hd.setLoaiThanhToan(loaiThanhToan);
                 hd.setNgayThanhToan(timestamp);
                 session.update(hd);
             }
-
             return true;
         } catch (HibernateException ex) {
             System.err.println(ex.getMessage());
@@ -116,6 +112,14 @@ public class ThanhToanRepositoryImpl implements ThanhToanRepository {
         query.select(root).where(builder.equal(taiKhoanJoin.get("idTk"), idBn.getIdTk()));
 
         Query q = session.createQuery(query);
+
+        return q.getResultList();
+    }
+
+    @Override
+    public List<LoaiThanhToan> getDSLoaiThanhToan() {
+        Session s = this.sessionFactoryBean.getObject().getCurrentSession();
+        Query q = s.createQuery("From LoaiThanhToan");
 
         return q.getResultList();
     }

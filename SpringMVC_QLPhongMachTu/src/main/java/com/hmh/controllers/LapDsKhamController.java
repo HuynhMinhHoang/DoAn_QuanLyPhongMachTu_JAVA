@@ -13,9 +13,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import com.twilio.Twilio;
+import com.twilio.type.PhoneNumber;
+import com.twilio.rest.api.v2010.account.Message;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.LichTrucService;
+import com.twilio.rest.api.v2010.account.Call;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
@@ -25,6 +28,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+//import javax.mail.Message as JavaMailMessage;
+//import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -69,6 +75,9 @@ public class LapDsKhamController {
     @Autowired
     private Environment env;
 
+//    private static final String ACCOUNT_SID = "AC3a27d16d424e54ae6a115f16c0b7a865";
+//    private static final String AUTH_TOKEN = "addff3957820661f58eba982f755e4ec";
+//    private static final String TWILIO_PHONE_NUMBER = "+84336334143";
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, customDateEditor);
@@ -150,12 +159,12 @@ public class LapDsKhamController {
             if (!rs.hasErrors()) {
                 if (this.phieuDangKyService.themVaCapNhat(pdk) == true) {
 
+                    //mail
                     MimeMessage message = javaMailSender.createMimeMessage();
                     MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
                     String nguoinhan = p.getIdBn().getEmail();
                     String tennguoinhan = p.getIdBn().getHoTen();
-//                String tenbacsi = p.getIdBs().getHoTen();
                     String buoikham = pdk.getThoiGianKham();
                     String ngaydikham = pdk.getChonNgaykham().toString();
 
@@ -167,13 +176,26 @@ public class LapDsKhamController {
                             + "<p>Xin chào, " + tennguoinhan + "! </p>"
                             + "<p>Bạn có lịch hẹn khám tại phòng mạch Health Couch vào ngày: " + ngaydikham + "</p>"
                             + "<p>Lịch khám vào buổi:  " + buoikham + ".</p>"
-                            //                        + "<p>Bác sĩ khám:  " + tenbacsi + ".</p>"
                             + "<p>Rất mong bạn sẽ đến đúng hẹn!!</p>"
                             + "</body></html>";
 
                     helper.setText(content, true);
 
                     javaMailSender.send(message);
+
+                    //sdt
+                    String smsBody = "Xin chào, " + tennguoinhan + "!"
+                            + "\nBạn có lịch hẹn khám tại phòng mạch Health Couch vào ngày: " + ngaydikham + ""
+                            + "\nLịch khám vào buổi:  " + buoikham + ""
+                            + "\nRất mong bạn sẽ đến đúng hẹn!!";
+                    Twilio.init(this.env.getProperty("twilio.accountSid"), this.env.getProperty("twilio.authToken"));
+//
+                    com.twilio.rest.api.v2010.account.Message smssdt = com.twilio.rest.api.v2010.account.Message.creator(
+                            new PhoneNumber("+84336334143"),
+                            new PhoneNumber(this.env.getProperty("twilio.phoneNumber")),
+                            smsBody
+                    ).create();
+
                     msg = "Xác nhận thành công!";
                     return "redirect:/yta/lapdskham/" + id + "?msg=" + URLEncoder.encode(msg, "UTF-8");
                 } else {
@@ -182,7 +204,7 @@ public class LapDsKhamController {
                 }
 
             }
-        } else {
+        } else {    
             msg = "Bệnh nhân trong ngày vượt quá số lượng quy định!";
             return "redirect:/yta/lapdskham/" + id + "?msg=" + URLEncoder.encode(msg, "UTF-8");
         }

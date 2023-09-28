@@ -23,32 +23,6 @@
                         <span class="nav__text">Tài khoản</span>
                     </a>
 
-                    <a href="<c:url value ="/admin/quanlythuoc"/>" class="nav__link active">
-                        <i class='bx bxs-capsule '></i>
-                        <span class="nav__text">Thuốc</span>
-                    </a>
-
-                    <a href="<c:url value ="/admin/lichtruc"/>" class="nav__link active">
-                        <i class='bx bx-time-five ' ></i>
-                        <span class="nav__text">Lịch trực</span>
-                    </a>
-
-
-                    <a href="<c:url value ="/admin/tienkham"/>" class="nav__link active">
-                        <i class='bx bx-money-withdraw'></i>
-                        <span class="nav__text">Tiền khám</span>
-                    </a>
-
-                    <a href="<c:url value ="/admin/dichvu"/>" class="nav__link active">
-                        <i class='bx bx-donate-heart'></i>
-                        <span class="nav__text">Dịch vụ</span>
-                    </a>
-
-
-                    <!--                    <div class="thongke_admin">
-                                            <p>THỐNG KÊ</p>
-                                        </div>-->
-
                     <a href="<c:url value ="/admin/thongkebenhnhan"/>" class="nav__link active">
                         <i class='bx bxs-face'></i>
                         <span class="nav__text">TK Bệnh nhân</span>
@@ -59,19 +33,54 @@
                         <span class="nav__text">TK Doanh thu</span>
                     </a>
 
-
+                    <a href="<c:url value ="/admin/thongkedanhgiaBS"/>" class="nav__link active">
+                        <i class='bx bxs-star'></i>
+                        <span class="nav__text">TK Đánh giá</span>
+                    </a>
                 </ul>
             </div>
         </sec:authorize>
 
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <a href="<c:url value ="/logout"/>" class="nav__link active animate__animated animate__fadeInLeft" id="active1">
-                <i class='bx bx-log-out-circle' ></i>
-                <span class="nav__text">Đăng xuất</span>
-            </a>
-        </c:if>
 
-    </div>
+        <sec:authorize access="hasRole('QUANLY')">
+            <ul class="nav__list">
+                <a href="<c:url value ="/admin/quanlythuoc"/>" class="nav__link active">
+                    <i class='bx bxs-capsule '></i>
+                    <span class="nav__text">Thuốc</span>
+                </a>
+
+                <a href="<c:url value ="/admin/lichtruc"/>" class="nav__link active">
+                    <i class='bx bx-time-five ' ></i>
+                    <span class="nav__text">Lịch trực</span>
+                </a>
+
+
+                <a href="<c:url value ="/admin/tienkham"/>" class="nav__link active">
+                    <i class='bx bx-money-withdraw'></i>
+                    <span class="nav__text">Tiền khám</span>
+                </a>
+
+                <a href="<c:url value ="/admin/dichvu"/>" class="nav__link active">
+                    <i class='bx bx-donate-heart'></i>
+                    <span class="nav__text">Dịch vụ</span>
+                </a>
+            </ul>
+        </div>
+    </sec:authorize>
+
+
+
+
+
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <a href="<c:url value ="/logout"/>" class="nav__link active animate__animated animate__fadeInLeft" id="active1">
+            <i class='bx bx-log-out-circle' ></i>
+            <span class="nav__text">Đăng xuất</span>
+        </a>
+    </c:if>
+
+</div>
 </div>
 
     <!--<script src="<c:url value="/js/main.js" />"></script>-->

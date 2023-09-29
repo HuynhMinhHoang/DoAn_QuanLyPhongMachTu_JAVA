@@ -73,6 +73,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().successHandler(customSuccessHandler).
                 failureUrl("/dangnhap?error");
 
+//        http.oauth2Login().loginPage("/dangnhap").successHandler(customSuccessHandler);
+
         http.logout().logoutSuccessUrl("/dangnhap");
 
         http.exceptionHandling().accessDeniedPage("/dangnhap?accessDenied");

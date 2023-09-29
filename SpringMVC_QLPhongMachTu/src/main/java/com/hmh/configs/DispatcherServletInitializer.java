@@ -22,7 +22,6 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
             JwtSecurityConfig.class,
             JwtService.class,
             AppConfig.class
-
         };
     }
 

@@ -2078,6 +2078,9 @@ select.form-select11{
 .one21116{
     margin: 0px;
 }
+.one21116vnpay a img{
+    border-radius: 50%;
+}
 
 .thanhtoan_search form input{
     width: 330px;
@@ -2338,11 +2341,11 @@ main.tableTKDT{
     height: 80%;
     margin: auto;
 
-    box-shadow: 0px 0px 40px 0px #dc354542;
+    box-shadow: 0px 0px 40px 0px #8eecff;
     padding: 50px;
     border-radius: 20px;
     flex-direction: column;
-    background: #f9fafb;
+    background: #0dcaf01f;
 }
 
 .taohoadon2{

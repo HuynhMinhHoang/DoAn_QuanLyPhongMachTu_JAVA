@@ -55,13 +55,13 @@
                 <div class="thongtin_taohoadon">
                     <div>
                         <p>
-                            Tiền khám & Tiền dịch vụ: ${idHD.tienKham.tienKham + idHD.tienDv}vnđ
+                            Tiền khám & Tiền dịch vụ: <span class="formatTien"> ${idHD.tienKham.tienKham + idHD.tienDv}</span>vnđ 
                         </p>
                     </div>
 
                     <div>
                         <p>
-                            Tiền thuốc: ${idHD.tienThuoc}vnđ
+                            Tiền thuốc: <span class="formatTien">${idHD.tienThuoc}</span>vnđ 
                         </p>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="thongtin_taohoadon thongtin_taohoadon1">
                         <div>
                             <p>
-                                Tổng tiền: <span id="tongTien">${idHD.tienKham.tienKham + idHD.tienDv + idHD.tienThuoc}</span>vnđ
+                                Tổng tiền: <span id="tongTien"  class="formatTien">${idHD.tienKham.tienKham + idHD.tienDv + idHD.tienThuoc}</span>vnđ
                             </p>
                         </div>
 
@@ -90,6 +90,12 @@
                                 <img src="<c:url value='/img/momo.png'/>" />
                             </a>
                         </div>
+
+                        <div class="one2111 one21116 one21116vnpay">
+                            <a href="/SpringMVC_QLPhongMachTu/taohoadonvnpay?id=${id}" target="_blank">
+                               <img src="<c:url value='/img/vnpay.png'/>" />
+                            </a>
+                        </div>                                   
 
                     </div>
                 </nav>
@@ -150,3 +156,5 @@
     // Thêm sự kiện "oninput" để theo dõi sự thay đổi trong ô "tienKhachDua"
     tienKhachDuaInput.addEventListener('input', tinhVaHienThiKetQua);
 </script>
+
+<script src="<c:url value="/js/main.js" />"></script>

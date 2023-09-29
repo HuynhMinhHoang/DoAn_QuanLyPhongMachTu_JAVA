@@ -58,6 +58,8 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
         Root<PhieuDangKy> root = query.from(PhieuDangKy.class);
         query = query.select(root);
 
+//        query = query.orderBy(builder.asc(root.get("chonNgaykham")));
+
         Query que = s.createQuery(query);
 
         if (params != null) {

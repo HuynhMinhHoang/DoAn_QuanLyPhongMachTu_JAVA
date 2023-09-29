@@ -54,11 +54,11 @@
                             <td>${d.idPhieudky.idPhieudk}</td>
                             <td>${d.idPhieudky.idBn.hoTen}</td>
 
-                            <td class="formatTien">${d.tienKham.tienKham}</td>
-                            <td class="formatTien">${d.tienThuoc}</td>
-                            <td class="formatTien">${d.tienDv}</td>
+                            <td><span class="formatTien">${d.tienKham.tienKham}</span>vnđ</td>
+                            <td><span class="formatTien">${d.tienThuoc}</span>vnđ</td>
+                            <td><span class="formatTien">${d.tienDv}</span>vnđ</td>
 
-                            <td class="formatTien">${d.tienKham.tienKham + d.tienThuoc + d.tienDv}</td>
+                            <td><span class="formatTien">${d.tienKham.tienKham + d.tienThuoc + d.tienDv}</span>vnđ</td>
                             <td>
                                 <fmt:formatDate value="${d.ngayThanhToan}" pattern="EEEE, dd/MM/yyyy HH:mm:ss"/> 
                             </td>

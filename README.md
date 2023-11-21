@@ -26,7 +26,7 @@
    - Dự án sẽ được tải vào NetBeans.
 
 3. **Cấu hình cơ sở dữ liệu**:
-   - Mở MySQL Workbench hoặc một công cụ quản lý cơ sở dữ liệu khác để tạo cơ sở dữ liệu mới có tên bất kì. Sau đó, kết nối cơ sở dữ liệu mới tạo kết nối vào cơ sở dữ liệu từ kho lưu trữ GitHub có tên là QuanLiPhongTro.sql
+   - Mở MySQL Workbench hoặc một công cụ quản lý cơ sở dữ liệu khác để tạo cơ sở dữ liệu mới có tên bất kì. Sau đó, kết nối cơ sở dữ liệu mới tạo kết nối vào cơ sở dữ liệu từ kho lưu trữ GitHub có tên là db.sql
    - Cập nhật thông tin kết nối đến cơ sở dữ liệu MySQL trong tệp `database.properties` của dự án. :
       - Tìm tệp `database.properties`trong dự án của bạn thường thì tệp này được đặt trong thư mục src/main/resources hoặc một vị trí tương tự.
       - Mở tệp `database.properties`

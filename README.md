@@ -1,4 +1,4 @@
-# DoAn_QuanLyPhongMachTu_JAVA
+# Web-PrivateClinics-Java
 
 # Họ tên: Huỳnh Minh Hoàng
 # MSSV: 2051052046 

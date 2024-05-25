@@ -1,9 +1,3 @@
-# Web-PrivateClinics-Java
-
-# Họ tên: Huỳnh Minh Hoàng
-# MSSV: 2051052046 
-
-
 # HỆ THỐNG QUẢN LÝ PHÒNG MẠCH TƯ
 
 ## Cài đặt và Chạy

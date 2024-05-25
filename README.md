@@ -1,5 +1,3 @@
-# HỆ THỐNG QUẢN LÝ PHÒNG MẠCH TƯ
-
 ## Cài đặt và Chạy
 
 ### Yêu cầu
